@@ -24,5 +24,8 @@
     background-color: firebrick;
     text-align: center;
     color: white;
+    position: absolute;
+    width: 100%;
+    padding: 30px;
 
 }
