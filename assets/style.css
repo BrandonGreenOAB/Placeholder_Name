@@ -1,0 +1,28 @@
+#leftSide {
+    height: 800px;
+    width: 250px;
+    margin-left: 25%;
+    
+
+}
+
+#mainBox {
+    height: 500px;
+    width: 1505px;
+    margin-left: 6rem;
+    
+}
+
+#savedRec {
+    height: 250px;
+    width: 1505px;
+    margin-left: 6rem;
+    margin-top: 3rem;
+}
+
+.footer {
+    background-color: firebrick;
+    text-align: center;
+    color: white;
+
+}
