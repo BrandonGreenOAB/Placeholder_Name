@@ -10,6 +10,8 @@ $("#foodBtn").on("click", function(e) {
     //calls food function
  food(foodInput);
 
+
+
 });
 
 
@@ -42,10 +44,22 @@ $("#pickBtn").on("click", function(e) {
         $.ajax({
 
             method: "GET",
-            url: "https://api.spoonacular.com/recipes/complexSearch?query=" + foodInput + "&apiKey=f84ef5063c2945efa425f9a031406685"
+            url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + foodInput 
+
         }).then(function(response) {
 
             console.log(response);
+
+            var foodResults = $("<p>");
+
+            foodResults.text(response.meals[0].strIngredient1);
+
+            $("#mainBox").append(foodResults);
+
+            for (let index = 1; index <= 20; index++) {
+                console.log(response.meals[0]["strIngredient" + index]);
+
+                }
 
         })
     };
@@ -77,6 +91,7 @@ $("#pickBtn").on("click", function(e) {
 
     })
 };
+
 
    
 
