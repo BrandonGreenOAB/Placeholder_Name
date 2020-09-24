@@ -22,9 +22,12 @@
 }
 
 .footer {
-    background-color: firebrick;
+    background-color:#F8F8F8;
     text-align: center;
-    color: white;
+    color:firebrick;
+    position: absolute;
+    width: 100%;
+    padding: 30px;
 
 }
 
