@@ -28,7 +28,7 @@
     position: absolute;
     width: 100%;
     padding: 30px;
-
+    background-image: url(../assets/double-bubble-outline.png);
 }
 
 body {
