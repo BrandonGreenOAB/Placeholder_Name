@@ -1,12 +1,9 @@
-// f84ef5063c2945efa425f9a031406685 API KEY for spoonacular
 
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
 appendSearch();
 
 randomFoodResults = [];
 randomResults = "";
-
-
 
 var foodStorage = [];
 //logs the input from searchBar element when the foodBtn is clicked
@@ -106,12 +103,58 @@ function randomFood() {
 $("#drinkBtnR").on("click", function (e) {
     e.preventDefault();
 
+    $("#mainContent").empty("")
+    $("#mainContent2").empty("")
+    $("#mainContent3").empty("")
+    $("#mainContent4").empty("")
+    $("#mainContent5").empty("")
+
+
+    //sets a variable that is equal to the value input into the searchBar
+    var drinkInput = $("#searchBar").val();
+
     //calls the randomFood function
-    randomFood();
+    randomDrink();
+    store(drinkInput);
+
+});    
 
     //create a function the connects the searchBar input to the food function when foodBtn is clicked
+//create a function the connects the searchBar input to the food function when foodBtnR is clicked
+function randomDrink() {
 
-})
+    $.ajax({
+
+        method: "GET",
+        url: "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+
+    }).then(function (response) {
+        console.log(response);
+        var drinkThumb = $("<img>");
+        var drinkTitle = $("<h3>");
+        var drinkType = $("<h4>");
+        var instructionsDrink = $("<p>");
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
+        instructionsDrink.text(response.drinks[0].strInstructions)
+        drinkType.text("Drink type: " + response.drinks[0].strAlcoholic)
+        drinkTitle.text(response.drinks[0].strDrink);
+        drinkThumb.attr("src", response.meals[0].strDrinkThumb);
+        drinkThumb.attr("width", "350px");
+        drinkThumb.attr("height", "350px");
+        $("#mainContent").append(drinkTitle);
+        $("#mainContent").append(drinkThumb);
+        $("#mainContent").append(drinkType);
+        // $("#mainContent5").append(ytVideo);
+        for (let index = 1; index <= 20; index++) {
+            // erika edited to get full igredient list on page, added p tags to get in a list
+            $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</p>');
+
+        $("#mainContent5").append(instructionsDrink)
+        }
+    })
+};
+
 //creates a function that calls the API and returns an object to the console
 function food(foodInput) {
 
