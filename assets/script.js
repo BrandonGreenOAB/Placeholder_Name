@@ -16,10 +16,15 @@ $("#foodBtn").on("click", function (e) {
 
     // make main box go blank with each click
 
-    $("#mainBox").html("")
+    $("#mainContent").html("")
+    $("#mainContent2").html("")
+    $("#mainContent3").html("")
+    $("#mainContent4").html("")
+    $("#mainContent5").html("")
+
 
     //sets a variable that is equal to the value input into the searchBar
-    var foodInput = $("#searchBar").val();
+    var foodInput = $("#searchBar").val().trim();
 
     //calls food function
     food(foodInput);
@@ -113,17 +118,44 @@ function food(foodInput) {
 
         console.log(response);
 
-        var foodResults = $("<p>");
+        var foodThumb = $("<img>");
 
-        foodResults.text(response.meals[0].strIngredient1);
+        var foodTitle = $("<h3>");
 
-        $("#mainBox").append(foodResults);
+        var foodType = $("<h4>");
+
+        var instructions = $("<p>");
+
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
+
+        instructions.text(response.meals[0].strInstructions)
+
+        foodType.text("Cuisine type: " + response.meals[0].strArea)
+
+        foodTitle.text(response.meals[0].strMeal);
+
+        foodThumb.attr("src", response.meals[0].strMealThumb);
+        foodThumb.attr("width", "250px");
+        foodThumb.attr("height", "250px");
+
+        $("#mainContent").append(foodTitle);
+
+        $("#mainContent").append(foodThumb);
+
+        $("#mainContent").append(foodType);
+
+        // $("#mainContent5").append(ytVideo);
 
         for (let index = 1; index <= 20; index++) {
-          
+
             // erika edited to get full igredient list on page, added p tags to get in a list
-            $('#mainBox').append('<p> Ingredients:' + response.meals[0]["strIngredient" + index] + '</p>');
+
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
+
         }
+
+        $("#mainContent5").append(instructions)
 
     })
 };
@@ -145,6 +177,25 @@ function drinks(drinkInput) {
 
 function store(foodInput) {
 
+    // //stores searcHistory array in local storage under the key name recentSearch
+    // localStorage.setItem("foodStorage", foodInput);
+
+    // // 
+    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+
+
+    var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
+    console.log(searchlocal);
+    if (searchlocal === null) {
+        foodStorage = [foodInput];
+    } else {
+        foodStorage.push(foodInput)
+    }
+    console.log(foodStorage);
+    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+
+
+
     // erika edited to prevent duplicates - can be changed back
     if (foodStorage.indexOf(foodInput) === -1) {
         foodStorage.push(foodInput);
@@ -154,10 +205,35 @@ function store(foodInput) {
 }
 
 function appendSearch() {
-    // to get text appended to the left side 
+
+
+
+    var appendLeft = $("<button>");
+    appendLeft.text(foodStorage[foodStorage.length]);
+
+    $("#leftSide").append(appendLeft);
+
+    //erika edited to get text appended to the left side can change back
+
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
         $("#leftSide").append("<p><button>" + foodStorage[i] + "</button></p>");
+
+
+    }
+
+}
+
+function appendSocialMedia() {
+
+
+    var appendBottom = $("<button>");
+    appendBottom.text(foodStorage[foodStorage.length]);
+
+    $("#socialmedia").append(appendBottom);
+
+    for (let i = 0; i < foodStorage.length; i++) {
+        $("#socialmedia").append("<p><button>" + foodStorage[i] + "</button></p>");
 
 
     }
