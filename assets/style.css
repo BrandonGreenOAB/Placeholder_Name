@@ -8,12 +8,13 @@
 }
 
 #mainBox {
-    height: 750px;
+    height: 950px;
     width: 1505px;
     margin-left: 6rem;
     background-image: url(../assets/double-bubble-outline.png);
     border-radius: 15px;
     display: flex;
+    flex-direction: column
 }
 
 #socialmedia {
@@ -55,14 +56,16 @@ img {
 
 #mainContent {
     display: flex;
-    width: 100%;
+    width: 25%;
     flex-wrap: wrap;
-    flex-basis: unset;
+    flex-direction: inherit;
 }
 #mainContent2 {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    width: 75%;
+    flex-flow: row;
+    float: inline-start;
+
 }
 #mainContent3 {
     display: flex;
