@@ -1,6 +1,4 @@
 // f84ef5063c2945efa425f9a031406685 API KEY for spoonacular
-// removed by erika
-// var foodStorage = [];
 
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
 appendSearch();
@@ -107,22 +105,6 @@ function randomFood() {
 };
 
 function store(foodInput) {
-    // //stores searcHistory array in local storage under the key name recentSearch
-    // localStorage.setItem("foodStorage", foodInput);
-
-    // // 
-    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
-
-
-     var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
-     console.log(searchlocal);
-     if (searchlocal === null) {
-         foodStorage = [foodInput];
-    } else {
-        foodStorage.push(foodInput)
-    }
-    console.log(foodStorage);
-    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
 
     // erika edited to prevent duplicates - can be changed back
     if (foodStorage.indexOf(foodInput) === -1) {
@@ -139,7 +121,6 @@ function appendSearch() {
     appendLeft.text(foodStorage[foodStorage.length]);
 
     $("#leftSide").append(appendLeft);
-    adds recent searches to page
 
     //erika edited to get text appended to the left side can change back
     $("#leftSide").html("");
