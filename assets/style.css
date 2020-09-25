@@ -16,7 +16,7 @@
     display: flex;
 }
 
-#savedRec {
+#socialmedia {
     height: 250px;
     width: 1505px;
     margin-left: 6rem;
@@ -24,6 +24,16 @@
     background-image: url(../assets/double-bubble-outline.png);
     border-radius: 15px;
 }
+/* 
+.uk-card-title {
+    text-align: center;
+} */
+
+/* this changes color of font awesome icons from blue to black */
+a .fa-5x {
+    color:black;
+    }
+
 
 .footer {
     background-color:#F8F8F8;

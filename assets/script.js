@@ -136,6 +136,23 @@ function randomFood() {
 };
 
 function store(foodInput) {
+    // //stores searcHistory array in local storage under the key name recentSearch
+    // localStorage.setItem("foodStorage", foodInput);
+
+    // // 
+    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+
+
+    var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
+    console.log(searchlocal);
+    if (searchlocal === null) {
+        foodStorage = [foodInput];
+    } else {
+        foodStorage.push(foodInput)
+    }
+    console.log(foodStorage);
+    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+
 
     // erika edited to prevent duplicates - can be changed back
     if (foodStorage.indexOf(foodInput) === -1) {
@@ -157,6 +174,22 @@ function appendSearch() {
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
         $("#leftSide").append("<p><button>" + foodStorage[i] + "</button></p>");
+
+
+    }
+
+}
+
+function appendSocialMedia() {
+
+
+    var appendBottom = $("<button>");
+    appendBottom.text(foodStorage[foodStorage.length]);
+
+    $("#socialmedia").append(appendBottom);
+
+    for (let i = 0; i < foodStorage.length; i++) {
+        $("#socialmedia").append("<p><button>" + foodStorage[i] + "</button></p>");
 
 
     }
