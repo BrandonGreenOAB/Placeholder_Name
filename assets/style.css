@@ -8,14 +8,15 @@
 }
 
 #mainBox {
-    height: 500px;
+    height: 750px;
     width: 1505px;
     margin-left: 6rem;
     background-image: url(../assets/double-bubble-outline.png);
     border-radius: 15px;
+    display: flex;
 }
 
-#savedRec {
+#socialmedia {
     height: 250px;
     width: 1505px;
     margin-left: 6rem;
@@ -23,6 +24,16 @@
     background-image: url(../assets/double-bubble-outline.png);
     border-radius: 15px;
 }
+/* 
+.uk-card-title {
+    text-align: center;
+} */
+
+/* this changes color of font awesome icons from blue to black */
+a .fa-5x {
+    color:black;
+    }
+
 
 .footer {
     background-color:#F8F8F8;
@@ -36,4 +47,40 @@
 
 body {
     background-color: firebrick;
+}
+
+img {
+    border-radius: 150px;
+}
+
+#mainContent {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-basis: unset;
+}
+#mainContent2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#mainContent3 {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-basis: unset;
+}
+#mainContent4 {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-basis: unset;
+}
+
+
+*+address, *+dl, *+fieldset, *+figure, *+ol, *+p, *+pre, *+ul {
+    margin-top: 5px;
+}
+address, dl, fieldset, figure, ol, p, pre, ul {
+    margin: 0 0 5px 0;
 }
