@@ -85,7 +85,7 @@ function randomFood() {
         // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
-            $('#mainContent2').append('<p>' + result.meals[0]["strIngredient" + index] + '</p>');        }
+            $('#mainContent2').append('<p>' + response.meals[0]["strIngredient" + index] + '</p>');        }
 
         $("#mainContent5").append(instructions)
     })
