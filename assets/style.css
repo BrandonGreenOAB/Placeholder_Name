@@ -3,7 +3,8 @@
     width: 250px;
     margin-left: 25%;
     background-image: url(../assets/double-bubble-outline.png);
-
+    margin-bottom: 1rem;
+    border-radius: 15px;
 }
 
 #mainBox {
@@ -11,6 +12,7 @@
     width: 1505px;
     margin-left: 6rem;
     background-image: url(../assets/double-bubble-outline.png);
+    border-radius: 15px;
 }
 
 #savedRec {
@@ -19,6 +21,7 @@
     margin-left: 6rem;
     margin-top: 3rem;
     background-image: url(../assets/double-bubble-outline.png);
+    border-radius: 15px;
 }
 
 .footer {
@@ -28,7 +31,7 @@
     position: absolute;
     width: 100%;
     padding: 30px;
-
+    background-image: url(../assets/double-bubble-outline.png);
 }
 
 body {

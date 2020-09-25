@@ -35,14 +35,27 @@
 
             <div class="uk-navbar-item">
                 <form action="javascript:void(0)">
-                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Enter Food or Drink" id="searchBar">
+                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Enter Food or Drink"
+                        id="searchBar">
                     <button class="uk-button uk-button-default" id="foodBtn">
                         <i class="fas fa-utensils"></i>
                     </button>
                     <button class="uk-button uk-button-default" id="drinkBtn">
                         <i class="fas fa-cocktail"></i>
                     </button>
-                    <button class="uk-button uk-button-default" id="pickBtn">Pick</button>
+                    <button class="uk-button uk-button-default" id="pickBtn" type="button">
+                        Random
+                    </button>
+                    <div uk-dropdown>
+                        <ul class="uk-nav uk-dropdown-nav">
+                            <button class="uk-button uk-button-default" id="foodBtnR">
+                                <i class="fas fa-utensils"></i>
+                            </button>
+                            <button class="uk-button uk-button-default" id="drinkBtnR">
+                                <i class="fas fa-cocktail"></i>
+                            </button>   
+                        </ul>
+                    </div>
                 </form>
             </div>
 
