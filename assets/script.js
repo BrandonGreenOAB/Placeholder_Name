@@ -1,9 +1,12 @@
 // f84ef5063c2945efa425f9a031406685 API KEY for spoonacular
-// removed by erika
-// var foodStorage = [];
 
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
+var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 appendSearch();
+
+randomFoodResults = [];
+randomResults = "";
+
 
 //logs the input from searchBar element when the foodBtn is clicked
 
@@ -40,7 +43,39 @@ $("#drinkBtn").on("click", function (e) {
 });
 
 //logs a random recipe to the console when the pickBtn is picked 
-$("#pickBtn").on("click", function (e) {
+$("#foodBtnR").on("click", function (e) {
+    e.preventDefault();
+
+    $("#mainBox").html("")
+
+    //sets a variable that is equal to the value input into the searchBar
+    var foodInput = $("#searchBar").val();
+
+    //calls the randomFood function
+    randomFood();
+    store(foodInput);
+
+})
+//create a function the connects the searchBar input to the food function when foodBtnR is clicked
+function randomFood(foodInput) {
+
+    $.ajax({
+
+        method: "GET",
+        url: "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+
+    }).then(function (result) {
+
+        console.log(result);
+  
+            
+        }
+
+    })
+};
+
+//logs a random recipe to the console when the pickBtn is picked 
+$("#drinkBtnR").on("click", function (e) {
     e.preventDefault();
 
     //calls the randomFood function
@@ -67,8 +102,8 @@ function food(foodInput) {
 
         $("#mainBox").append(foodResults);
 
-        for (let index = 1; index <= 20; index++) {
-            // erika edited to get full igredient list on page, added p tags to get in a list
+        for (let index = 0; index <= 20; index++) {
+            // to get full igredient list on page, added p tags to get in a list
             $('#mainBox').append('<p>' + response.meals[0]["strIngredient" + index] + '</p>');
         }
 
@@ -89,38 +124,8 @@ function drinks(drinkInput) {
     })
 };
 
-//creates a function that calls a random food API and logs the result in the console 
-function randomFood() {
-
-    $.ajax({
-        method: "GET",
-        url: "https://api.spoonacular.com/recipes/random?apiKey=f84ef5063c2945efa425f9a031406685"
-
-    }).then(function (result) {
-
-        console.log(result);
-
-    })
-};
-
 function store(foodInput) {
-    // //stores searcHistory array in local storage under the key name recentSearch
-    // localStorage.setItem("foodStorage", foodInput);
-
-    // // 
-    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
-
-    // var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
-    // console.log(searchlocal);
-    // if (searchlocal === null) {
-    //     foodStorage = [foodInput];
-    // } else {
-    //     foodStorage.push(foodInput)
-    // }
-    // console.log(foodStorage);
-    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
-
-    // erika edited to prevent duplicates - can be changed back
+    // to prevent duplicates and to save food to local storage
     if (foodStorage.indexOf(foodInput) === -1) {
         foodStorage.push(foodInput);
         localStorage.setItem("storedFood", JSON.stringify(foodStorage));
@@ -128,14 +133,7 @@ function store(foodInput) {
 }
 
 function appendSearch() {
-
-    // var appendLeft = $("<button>");
-    // appendLeft.text(foodStorage[foodStorage.length]);
-
-    // $("#leftSide").append(appendLeft);
-    // adds recent searches to page
-
-    // erika edited to get text appended to the left side can change back
+    // to get text appended to the left side 
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
         $("#leftSide").append("<p><button>" + foodStorage[i] + "</button></p>");
