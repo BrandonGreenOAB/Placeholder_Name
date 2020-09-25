@@ -5,6 +5,7 @@
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
 appendSearch();
 
+var foodStorage = [];
 //logs the input from searchBar element when the foodBtn is clicked
 
 $("#foodBtn").on("click", function (e) {
@@ -68,12 +69,14 @@ function food(foodInput) {
         $("#mainBox").append(foodResults);
 
         for (let index = 1; index <= 20; index++) {
+          
             // erika edited to get full igredient list on page, added p tags to get in a list
             $('#mainBox').append('<p>' + response.meals[0]["strIngredient" + index] + '</p>');
         }
 
     })
 };
+
 
 //creates a function that calls the API and returns an object to the console
 function drinks(drinkInput) {
@@ -110,35 +113,39 @@ function store(foodInput) {
     // // 
     // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
 
-    // var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
-    // console.log(searchlocal);
-    // if (searchlocal === null) {
-    //     foodStorage = [foodInput];
-    // } else {
-    //     foodStorage.push(foodInput)
-    // }
-    // console.log(foodStorage);
-    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+
+     var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
+     console.log(searchlocal);
+     if (searchlocal === null) {
+         foodStorage = [foodInput];
+    } else {
+        foodStorage.push(foodInput)
+    }
+    console.log(foodStorage);
+    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
 
     // erika edited to prevent duplicates - can be changed back
     if (foodStorage.indexOf(foodInput) === -1) {
         foodStorage.push(foodInput);
         localStorage.setItem("storedFood", JSON.stringify(foodStorage));
     }
+
 }
 
 function appendSearch() {
 
-    // var appendLeft = $("<button>");
-    // appendLeft.text(foodStorage[foodStorage.length]);
 
-    // $("#leftSide").append(appendLeft);
-    // adds recent searches to page
+    var appendLeft = $("<button>");
+    appendLeft.text(foodStorage[foodStorage.length]);
 
-    // erika edited to get text appended to the left side can change back
+    $("#leftSide").append(appendLeft);
+    adds recent searches to page
+
+    //erika edited to get text appended to the left side can change back
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
         $("#leftSide").append("<p><button>" + foodStorage[i] + "</button></p>");
+
 
     }
 
