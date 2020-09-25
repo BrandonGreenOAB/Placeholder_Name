@@ -1,17 +1,14 @@
 // f84ef5063c2945efa425f9a031406685 API KEY for spoonacular
 
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
-var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 appendSearch();
 
-<<<<<<< HEAD
 randomFoodResults = [];
 randomResults = "";
 
 
-=======
+
 var foodStorage = [];
->>>>>>> b37a82e22a7d54ebec49d3d31eaad7751b8bef00
 //logs the input from searchBar element when the foodBtn is clicked
 
 $("#foodBtn").on("click", function (e) {
@@ -50,7 +47,7 @@ $("#drinkBtn").on("click", function (e) {
 $("#foodBtnR").on("click", function (e) {
     e.preventDefault();
 
-    $("#mainBox").html("")
+    $("#mainContent2").html("")
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val();
@@ -61,20 +58,36 @@ $("#foodBtnR").on("click", function (e) {
 
 })
 //create a function the connects the searchBar input to the food function when foodBtnR is clicked
-function randomFood(foodInput) {
+function randomFood() {
 
     $.ajax({
 
         method: "GET",
-        url: "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+        url: "https://www.themealdb.com/api/json/v1/1/random.php"
 
-    }).then(function (result) {
+    }).then(function (response) {
+        console.log(response);
+        var foodThumb = $("<img>");
+        var foodTitle = $("<h3>");
+        var foodType = $("<h4>");
+        var instructions = $("<p>");
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
+        instructions.text(response.meals[0].strInstructions)
+        foodType.text("Cuisine type: " + response.meals[0].strArea)
+        foodTitle.text(response.meals[0].strMeal);
+        foodThumb.attr("src", response.meals[0].strMealThumb);
+        foodThumb.attr("width", "350px");
+        foodThumb.attr("height", "350px");
+        $("#mainContent").append(foodTitle);
+        $("#mainContent").append(foodThumb);
+        $("#mainContent").append(foodType);
+        // $("#mainContent5").append(ytVideo);
+        for (let index = 1; index <= 20; index++) {
+            // erika edited to get full igredient list on page, added p tags to get in a list
+            $('#mainContent2').append('<p>' + result.meals[0]["strIngredient" + index] + '</p>');        }
 
-        console.log(result);
-  
-            
-        }
-
+        $("#mainContent5").append(instructions)
     })
 };
 
@@ -106,15 +119,10 @@ function food(foodInput) {
 
         $("#mainBox").append(foodResults);
 
-<<<<<<< HEAD
-        for (let index = 0; index <= 20; index++) {
-            // to get full igredient list on page, added p tags to get in a list
-=======
         for (let index = 1; index <= 20; index++) {
           
             // erika edited to get full igredient list on page, added p tags to get in a list
->>>>>>> b37a82e22a7d54ebec49d3d31eaad7751b8bef00
-            $('#mainBox').append('<p>' + response.meals[0]["strIngredient" + index] + '</p>');
+            $('#mainBox').append('<p> Ingredients:' + response.meals[0]["strIngredient" + index] + '</p>');
         }
 
     })
@@ -136,28 +144,8 @@ function drinks(drinkInput) {
 };
 
 function store(foodInput) {
-<<<<<<< HEAD
-    // to prevent duplicates and to save food to local storage
-=======
-    // //stores searcHistory array in local storage under the key name recentSearch
-    // localStorage.setItem("foodStorage", foodInput);
-
-    // // 
-    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
-
-
-     var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
-     console.log(searchlocal);
-     if (searchlocal === null) {
-         foodStorage = [foodInput];
-    } else {
-        foodStorage.push(foodInput)
-    }
-    console.log(foodStorage);
-    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
 
     // erika edited to prevent duplicates - can be changed back
->>>>>>> b37a82e22a7d54ebec49d3d31eaad7751b8bef00
     if (foodStorage.indexOf(foodInput) === -1) {
         foodStorage.push(foodInput);
         localStorage.setItem("storedFood", JSON.stringify(foodStorage));
@@ -166,19 +154,7 @@ function store(foodInput) {
 }
 
 function appendSearch() {
-<<<<<<< HEAD
     // to get text appended to the left side 
-=======
-
-
-    var appendLeft = $("<button>");
-    appendLeft.text(foodStorage[foodStorage.length]);
-
-    $("#leftSide").append(appendLeft);
-    adds recent searches to page
-
-    //erika edited to get text appended to the left side can change back
->>>>>>> b37a82e22a7d54ebec49d3d31eaad7751b8bef00
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
         $("#leftSide").append("<p><button>" + foodStorage[i] + "</button></p>");
