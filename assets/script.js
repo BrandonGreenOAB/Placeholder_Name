@@ -19,7 +19,7 @@ $("#foodBtn").on("click", function (e) {
     $("#mainContent2").html("")
     $("#mainContent3").html("")
     $("#mainContent4").html("")
-    $("#mainContent5").html("")
+
 
 
     //sets a variable that is equal to the value input into the searchBar
@@ -42,7 +42,7 @@ $("#drinkBtn").on("click", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-    $("#mainContent5").empty("");
+
 
     //sets a variable that is equal to the value input into the searchBar
     var drinkInput = $("#searchBar").val();
@@ -62,8 +62,7 @@ $("#foodBtnR").on("click", function (e) {
     $("#mainContent2").empty("")
     $("#mainContent3").empty("")
     $("#mainContent4").empty("")
-    $("#mainContent5").empty("")
-
+    
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val();
@@ -83,7 +82,7 @@ $("#drinkBtnR").on("click", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-    $("#mainContent5").empty("");
+   
 
 
     //sets a variable that is equal to the value input into the searchBar
@@ -105,7 +104,7 @@ $(document).on("click", ".recentSearch", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-    $("#mainContent5").empty("");
+   
 
         //sets a variable that is equal to the value of the button's text
         recentsAppended = $(this).text();
@@ -162,7 +161,7 @@ function getRecFood() {
 
         $("#mainContent").append(foodType);
 
-        // $("#mainContent5").append(ytVideo);
+       
 
         for (let index = 1; index <= 20; index++) {
             console.log(response.meals[0]["strIngredient" + index]);
@@ -172,7 +171,7 @@ function getRecFood() {
 
         }
 
-        $("#mainContent5").append(instructions)
+        $("#mainContent4").append(instructions)
 
     })
 };
@@ -248,7 +247,6 @@ function randomDrink() {
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
-        // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
@@ -256,7 +254,7 @@ function randomDrink() {
             }
             $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
-            $("#mainContent5").append(instructionsDrink)
+            $("#mainContent4").append(instructionsDrink)
         }
     })
 };
@@ -300,8 +298,6 @@ function food(foodInput) {
 
         $("#mainContent").append(foodType);
 
-        // $("#mainContent5").append(ytVideo);
-
         for (let index = 1; index <= 20; index++) {
 
             // to get full igredient list on page, added p tags to get in a list
@@ -310,7 +306,7 @@ function food(foodInput) {
 
         }
 
-        $("#mainContent5").append(instructions)
+        $("#mainContent4").append(instructions)
 
     })
 };
@@ -340,7 +336,6 @@ function drinks(drinkInput) {
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
-        // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
@@ -348,7 +343,7 @@ function drinks(drinkInput) {
             }
             $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
-            $("#mainContent5").append(instructionsDrink)
+            $("#mainContent4").append(instructionsDrink)
         }
     })
 };
