@@ -91,6 +91,7 @@ function randomFood() {
 
         foodThumb.attr("src", response.meals[0].strMealThumb);
 <<<<<<< HEAD
+<<<<<<< HEAD
         foodThumb.attr("width", "350px");
         foodThumb.attr("height", "350px");
 =======
@@ -98,6 +99,12 @@ function randomFood() {
         foodThumb.attr("height", "250px");
 
 >>>>>>> 51360087958c1c89cbd28cc653fc9306ec32c433
+=======
+
+        foodThumb.attr("width", "250px");
+        foodThumb.attr("height", "250px");
+
+>>>>>>> 2f4b243e3232a056df08897f3847d1ba37b003b4
         $("#mainContent").append(foodTitle);
         $("#mainContent").append(foodThumb);
         $("#mainContent").append(foodType);
@@ -105,12 +112,17 @@ function randomFood() {
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
 <<<<<<< HEAD
+<<<<<<< HEAD
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
         $("#mainContent3").append(instructions)
 =======
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
 >>>>>>> 51360087958c1c89cbd28cc653fc9306ec32c433
+=======
+
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
+>>>>>>> 2f4b243e3232a056df08897f3847d1ba37b003b4
         }
         $("#mainContent3").append(instructions)
     })
