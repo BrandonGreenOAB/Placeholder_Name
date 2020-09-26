@@ -123,7 +123,7 @@ $("#drinkBtnR").on("click", function (e) {
 
     //calls the randomFood function
     randomDrink();
-    store(drinkInput);
+    stored(drinkInput);
     drinks(drinkInput);
     appendSearch();
 
@@ -263,7 +263,7 @@ function store(foodInput) {
 
 }
 
-function store(drinkInput) {
+function stored(drinkInput) {
 
     var searchlocal = JSON.parse(localStorage.getItem("drinkStorage"))
     console.log(searchlocal);
