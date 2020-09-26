@@ -1,11 +1,13 @@
 
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
+var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
 appendSearch();
 
 randomFoodResults = [];
 randomResults = "";
 
 var foodStorage = [];
+var drinkStorage = [];
 //logs the input from searchBar element when the foodBtn is clicked
 
 $("#foodBtn").on("click", function (e) {
@@ -40,7 +42,7 @@ $("#drinkBtn").on("click", function (e) {
     var drinkInput = $("#searchBar").val();
 
     //calls drink function
-    drinks(drinkInput);
+    
 
 
 });
@@ -62,6 +64,7 @@ $("#foodBtnR").on("click", function (e) {
     //calls the randomFood function
     randomFood();
     store(foodInput);
+    appendSearch()
 
 })
 //create a function the connects the searchBar input to the food function when foodBtnR is clicked
@@ -78,24 +81,29 @@ function randomFood() {
         var foodTitle = $("<h3>");
         var foodType = $("<h4>");
         var instructions = $("<p>");
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
+
         instructions.text(response.meals[0].strInstructions)
+
         foodType.text("Cuisine type: " + response.meals[0].strArea)
+
         foodTitle.text(response.meals[0].strMeal);
+        foodTitle.attr("id", "foodTitle")
+
         foodThumb.attr("src", response.meals[0].strMealThumb);
+
         foodThumb.attr("width", "250px");
         foodThumb.attr("height", "250px");
+
         $("#mainContent").append(foodTitle);
         $("#mainContent").append(foodThumb);
         $("#mainContent").append(foodType);
-        // $("#mainContent5").append(ytVideo);
+        
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
-            $('#mainContent1').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
-        $("#mainContent2").append(instructions)
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
         }
+        $("#mainContent3").append(instructions)
     })
 };
 
@@ -116,6 +124,8 @@ $("#drinkBtnR").on("click", function (e) {
     //calls the randomFood function
     randomDrink();
     store(drinkInput);
+    drinks(drinkInput);
+    appendSearch();
 
 });    
 
@@ -139,7 +149,7 @@ function randomDrink() {
         instructionsDrink.text(response.drinks[0].strInstructions)
         drinkType.text("Drink type: " + response.drinks[0].strAlcoholic)
         drinkTitle.text(response.drinks[0].strDrink);
-        drinkThumb.attr("src", response.meals[0].strDrinkThumb);
+        drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
         drinkThumb.attr("width", "350px");
         drinkThumb.attr("height", "350px");
         $("#mainContent").append(drinkTitle);
@@ -175,23 +185,26 @@ function food(foodInput) {
 
         var instructions = $("<p>");
 
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
 
-        instructions.text(response.meals[0].strInstructions);
+        instructions.text(response.meals[0].strInstructions)
 
-        foodType.text("Cuisine type: " + response.meals[0].strArea);
+        foodType.text("Cuisine type: " + response.meals[0].strArea)
 
         foodTitle.text(response.meals[0].strMeal);
 
         foodThumb.attr("src", response.meals[0].strMealThumb);
         foodThumb.attr("width", "250px");
         foodThumb.attr("height", "250px");
-        
 
         $("#mainContent").append(foodTitle);
 
         $("#mainContent").append(foodThumb);
 
         $("#mainContent").append(foodType);
+
+        // $("#mainContent5").append(ytVideo);
 
         for (let index = 1; index <= 20; index++) {
 
@@ -201,8 +214,7 @@ function food(foodInput) {
 
         }
 
-        $("#mainContent3").append(instructions)
-
+        $("#mainContent5").append(instructions)
 
     })
 };
@@ -250,6 +262,29 @@ function store(foodInput) {
     }
 
 }
+
+function store(drinkInput) {
+
+    var searchlocal = JSON.parse(localStorage.getItem("drinkStorage"))
+    console.log(searchlocal);
+    if (searchlocal === null) {
+        drinkStorage = [drinkInput];
+    } else {
+        drinkStorage.push(drinkInput)
+    }
+    console.log(drinkStorage);
+    localStorage.setItem("drinkStorage", JSON.stringify(drinkStorage));
+
+
+
+    // erika edited to prevent duplicates - can be changed back
+    if (drinkStorage.indexOf(drinkInput) === -1) {
+        drinkStorage.push(drinkInput);
+        localStorage.setItem("storedDrink", JSON.stringify(drinkStorage));
+    }
+
+}
+
 
 function appendSearch() {
 
