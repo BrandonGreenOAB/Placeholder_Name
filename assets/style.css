@@ -1,5 +1,5 @@
 #leftSide {
-    height: 800px;
+    height: 950px;
     width: 250px;
     margin-left: 25%;
     background-image: url(../assets/double-bubble-outline.png);
@@ -20,7 +20,7 @@
 
 #socialmedia {
     height: 250px;
-    width: 1505px;
+    width: 750px;
     margin-left: 6rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
@@ -28,8 +28,6 @@
     border-radius: 15px;
     text-align: center;
 }
-
-
 
 .twitterDiv {
     display: flex;
@@ -88,10 +86,13 @@ a .fa-2x {
     color:firebrick;
     position: absolute;
     width: 100%;
-    padding: 30px;
+    padding-top: 15px;
     background-image: url(../assets/double-bubble-outline.png);
 }
 
+.uk-navbar {
+    margin-bottom: 25px;
+}
 body {
     background-color: firebrick;
 }
