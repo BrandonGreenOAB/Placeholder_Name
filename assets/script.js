@@ -298,11 +298,28 @@ function food(foodInput) {
 
         $("#mainContent").append(foodType);
 
-        for (let index = 1; index <= 20; index++) {
+
+        // $("#mainContent5").append(ytVideo);
+
+        for (let index = 1; index <= 10; index++) {
+
 
             // to get full igredient list on page, added p tags to get in a list
+            if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
+                return;
+            }
 
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
+
+        }
+        for (let index = 11; index <= 20; index++) {
+
+            // to get full igredient list on page, added p tags to get in a list
+            if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
+                return;
+            }
+
+            $('#mainContent3').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
         }
 
@@ -325,10 +342,9 @@ function drinks(drinkInput) {
         var drinkTitle = $("<h3>");
         var drinkType = $("<h4>");
         var instructionsDrink = $("<p>");
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
-        instructionsDrink.text("Instructions: " + response.drinks[0].strInstructions)
-        drinkType.text("Drink type: " + response.drinks[0].strAlcoholic)
+
+        instructionsDrink.text("Instructions: " + response.drinks[0].strInstructions);
+        drinkType.text("Drink type: " + response.drinks[0].strAlcoholic);
         drinkTitle.text("Beverage Name: " + response.drinks[0].strDrink);
         drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
         drinkThumb.attr("width", "250px");
@@ -336,26 +352,23 @@ function drinks(drinkInput) {
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
+
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
                 return;
             }
-            $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
-            $("#mainContent4").append(instructionsDrink)
+            $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
+            $("#mainContent3").append(instructionsDrink);
+
         }
+
+        
     })
 };
 
 function store(foodInput) {
-
-    // //stores searcHistory array in local storage under the key name recentSearch
-    // localStorage.setItem("foodStorage", foodInput);
-
-    // // 
-    // localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
-
 
     var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
     console.log(searchlocal);
