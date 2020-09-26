@@ -48,7 +48,6 @@ $("#drinkBtn").on("click", function (e) {
     var drinkInput = $("#searchBar").val();
 
     //calls the randomFood function
-    randomDrink();
     stored(drinkInput);
     drinks(drinkInput);
     appendSearch();
@@ -94,7 +93,6 @@ $("#drinkBtnR").on("click", function (e) {
     //calls the randomFood function
     randomDrink();
     stored(drinkInput);
-    drinks(drinkInput);
     appendSearch();
 
 }); 
