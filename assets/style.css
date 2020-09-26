@@ -113,7 +113,7 @@ img {
 }
 #mainContent2 {
     display: flex;
-    width: 100%;
+    width: 50%;
     flex-flow: column;
     text-align: left;
     text-indent: 5px;
@@ -121,8 +121,9 @@ img {
 #mainContent3 {
     margin-top: 1%;
     display: flex;
-    width: 100%;
+    width: 50%;
     flex-wrap: wrap;
+    flex-flow: column;
     flex-basis: unset;
     text-align: center;
 }

@@ -216,7 +216,7 @@ function food(foodInput) {
 
         // $("#mainContent5").append(ytVideo);
 
-        for (let index = 1; index <= 20; index++) {
+        for (let index = 1; index <= 10; index++) {
 
             // to get full igredient list on page, added p tags to get in a list
             if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
@@ -226,8 +226,18 @@ function food(foodInput) {
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
         }
+        for (let index = 11; index <= 20; index++) {
 
-        $("#mainContent3").append(instructions)
+            // to get full igredient list on page, added p tags to get in a list
+            if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
+                return;
+            }
+
+            $('#mainContent3').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
+
+        }
+
+        $("#mainContent4").append(instructions)
 
     })
 };
