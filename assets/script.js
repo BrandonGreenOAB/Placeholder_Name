@@ -227,7 +227,7 @@ function food(foodInput) {
 
         }
 
-        $("#mainContent5").append(instructions)
+        $("#mainContent3").append(instructions)
 
     })
 };
@@ -263,9 +263,10 @@ function drinks(drinkInput) {
                 return;
             }
             $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
+            $("#mainContent3").append(instructionsDrink);
         }
 
-        $("#mainContent3").append(instructionsDrink);
+        
     })
 };
 
