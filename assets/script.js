@@ -19,13 +19,13 @@ $("#foodBtn").on("click", function (e) {
     $("#mainContent2").html("")
     $("#mainContent3").html("")
     $("#mainContent4").html("")
-    $("#mainContent5").html("")
+
 
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val().trim();
 
-    //calls food function
+    
     food(foodInput);
 
     store(foodInput);
@@ -42,7 +42,7 @@ $("#drinkBtn").on("click", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-    $("#mainContent5").empty("");
+
 
     //sets a variable that is equal to the value input into the searchBar
     var drinkInput = $("#searchBar").val();
@@ -50,9 +50,8 @@ $("#drinkBtn").on("click", function (e) {
     //calls the randomFood function
     stored(drinkInput);
     drinks(drinkInput);
-    appendSearch();
 
-});        
+});
 
 
 //logs a random recipe to the console when the pickBtn is picked 
@@ -63,8 +62,7 @@ $("#foodBtnR").on("click", function (e) {
     $("#mainContent2").empty("")
     $("#mainContent3").empty("")
     $("#mainContent4").empty("")
-    $("#mainContent5").empty("")
-
+    
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val();
@@ -72,7 +70,7 @@ $("#foodBtnR").on("click", function (e) {
     //calls the randomFood function
     randomFood();
     store(foodInput);
-    appendSearch()
+    appendSearch();
 
 })
 
@@ -84,7 +82,7 @@ $("#drinkBtnR").on("click", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-    $("#mainContent5").empty("");
+   
 
 
     //sets a variable that is equal to the value input into the searchBar
@@ -95,7 +93,94 @@ $("#drinkBtnR").on("click", function (e) {
     stored(drinkInput);
     appendSearch();
 
-}); 
+});
+
+//when the recentButton is clicked, so something
+$(document).on("click", ".recentSearch", function (e) {
+    e.preventDefault();
+
+
+    $("#mainContent").empty("");
+    $("#mainContent2").empty("");
+    $("#mainContent3").empty("");
+    $("#mainContent4").empty("");
+   
+
+        //sets a variable that is equal to the value of the button's text
+        recentsAppended = $(this).text();
+
+        //calls gettRecFood function
+        getRecFood(recentsAppended);
+
+    console.log("yes");
+
+});
+
+//creates a function that calls the API and returns an object to the console
+function getRecFood() {
+
+    
+    //log recentsAppended to the console
+    console.log("hello");
+
+     
+//creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
+    $.ajax({
+
+        method: "GET",
+        url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + recentsAppended 
+
+    //then creates a function 
+    }).then(function(response) {
+
+
+        var foodThumb = $("<img>");
+
+        var foodTitle = $("<h3>");
+
+        var foodType = $("<h4>");
+
+        var instructions = $("<p>");
+        
+         // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
+
+        instructions.text(response.meals[0].strInstructions)
+
+        foodType.text("Cuisine type: " + response.meals[0].strArea)
+
+        foodTitle.text(response.meals[0].strMeal);
+
+        foodThumb.attr("src", response.meals[0].strMealThumb);
+        foodThumb.attr("width", "250px");
+        foodThumb.attr("height", "250px");
+
+        $("#mainContent").append(foodTitle);
+
+        $("#mainContent").append(foodThumb);
+
+        $("#mainContent").append(foodType);
+
+       
+
+        for (let index = 1; index <= 20; index++) {
+            console.log(response.meals[0]["strIngredient" + index]);
+            // erika edited to get full igredient list on page, added p tags to get in a list
+
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
+
+        }
+
+        $("#mainContent4").append(instructions)
+
+    })
+};
+        
+
+
+
+
+
 //create a function the connects the searchBar input to the food function when foodBtnR is clicked
 function randomFood() {
 
@@ -126,7 +211,7 @@ function randomFood() {
         $("#mainContent").append(foodTitle);
         $("#mainContent").append(foodThumb);
         $("#mainContent").append(foodType);
-        
+
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
 
@@ -134,9 +219,9 @@ function randomFood() {
         }
         $("#mainContent3").append(instructions)
     })
-};   
+};
 
-    //create a function the connects the searchBar input to the food function when foodBtn is clicked
+//create a function the connects the searchBar input to the food function when foodBtn is clicked
 //create a function the connects the searchBar input to the food function when foodBtnR is clicked
 function randomDrink() {
 
@@ -162,7 +247,6 @@ function randomDrink() {
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
-        // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
@@ -170,7 +254,7 @@ function randomDrink() {
             }
             $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
-            $("#mainContent5").append(instructionsDrink)
+            $("#mainContent4").append(instructionsDrink)
         }
     })
 };
@@ -214,9 +298,11 @@ function food(foodInput) {
 
         $("#mainContent").append(foodType);
 
+
         // $("#mainContent5").append(ytVideo);
 
         for (let index = 1; index <= 10; index++) {
+
 
             // to get full igredient list on page, added p tags to get in a list
             if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
@@ -272,8 +358,10 @@ function drinks(drinkInput) {
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
                 return;
             }
+
             $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
             $("#mainContent3").append(instructionsDrink);
+
         }
 
         
@@ -329,8 +417,8 @@ function appendSearch() {
 
 
 
-    var appendLeft = $("<button>");
-    appendLeft.text(foodStorage[foodStorage.length]);
+    var appendLeft = $("<button class='recentSearch'>" )
+    appendLeft.text(foodStorage[foodStorage.length - 1]);
 
     $("#leftSide").append(appendLeft);
 
@@ -338,12 +426,11 @@ function appendSearch() {
 
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
-        $("#leftSide").append("<p><button>" + foodStorage[i] + "</button></p>");
-
+        $("#leftSide").append("<p><button class='recentSearch'>" + foodStorage[i] + "</button></p>");
 
     }
-
 }
+
 
 function appendSocialMedia() {
 
