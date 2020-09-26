@@ -2,6 +2,7 @@
 var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
 var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
 appendSearch();
+appendDrinkSearch();
 
 // randomFoodResults = [];
 // randomResults = "";
@@ -25,7 +26,7 @@ $("#foodBtn").on("click", function (e) {
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val().trim();
 
-    
+
     food(foodInput);
 
     store(foodInput);
@@ -50,6 +51,7 @@ $("#drinkBtn").on("click", function (e) {
     //calls the randomFood function
     stored(drinkInput);
     drinks(drinkInput);
+    appendDrinkSearch();
 
 });
 
@@ -62,7 +64,7 @@ $("#foodBtnR").on("click", function (e) {
     $("#mainContent2").empty("")
     $("#mainContent3").empty("")
     $("#mainContent4").empty("")
-    
+
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val();
@@ -82,7 +84,7 @@ $("#drinkBtnR").on("click", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-   
+
 
 
     //sets a variable that is equal to the value input into the searchBar
@@ -91,7 +93,7 @@ $("#drinkBtnR").on("click", function (e) {
     //calls the randomFood function
     randomDrink();
     stored(drinkInput);
-    appendSearch();
+    appendDrinkSearch();
 
 });
 
@@ -104,13 +106,35 @@ $(document).on("click", ".recentSearch", function (e) {
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
     $("#mainContent4").empty("");
-   
 
-        //sets a variable that is equal to the value of the button's text
-        recentsAppended = $(this).text();
 
-        //calls gettRecFood function
-        getRecFood(recentsAppended);
+    //sets a variable that is equal to the value of the button's text
+    recentsAppended = $(this).text();
+
+    //calls gettRecFood function
+    getRecFood(recentsAppended);
+
+    console.log("yes");
+
+});
+
+
+
+//when the recentButton is clicked, so something
+$(document).on("click", ".recentSearchDrink", function (e) {
+    e.preventDefault();
+
+    $("#mainContent").empty("");
+    $("#mainContent2").empty("");
+    $("#mainContent3").empty("");
+    $("#mainContent4").empty("");
+
+
+    //sets a variable that is equal to the value of the button's text
+    recentsAppended = $(this).text();
+
+    //calls gettRecFood function
+    getRecDrink(recentsAppended);
 
     console.log("yes");
 
@@ -119,19 +143,19 @@ $(document).on("click", ".recentSearch", function (e) {
 //creates a function that calls the API and returns an object to the console
 function getRecFood() {
 
-    
+
     //log recentsAppended to the console
     console.log("hello");
 
-     
-//creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
+
+    //creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
     $.ajax({
 
         method: "GET",
-        url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + recentsAppended 
+        url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + recentsAppended
 
-    //then creates a function 
-    }).then(function(response) {
+        //then creates a function 
+    }).then(function (response) {
 
 
         var foodThumb = $("<img>");
@@ -141,8 +165,8 @@ function getRecFood() {
         var foodType = $("<h4>");
 
         var instructions = $("<p>");
-        
-         // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
         // ytVideo.attr("src", response.meals[0].strYoutube)
 
         instructions.text(response.meals[0].strInstructions)
@@ -161,7 +185,7 @@ function getRecFood() {
 
         $("#mainContent").append(foodType);
 
-       
+
 
         for (let index = 1; index <= 20; index++) {
             console.log(response.meals[0]["strIngredient" + index]);
@@ -175,8 +199,69 @@ function getRecFood() {
 
     })
 };
-        
 
+
+//creates a function that calls the API and returns an object to the console
+function getRecDrink() {
+
+
+    //log recentsAppended to the console
+    console.log("hello");
+
+
+    //creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
+    $.ajax({
+
+        method: "GET",
+        url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + recentsAppended
+
+        //then creates a function 
+    }).then(function (response) {
+
+
+        var drinkThumb = $("<img>");
+
+        var drinkTitle = $("<h3>");
+
+        var drinkType = $("<h4>");
+
+        var instructionsDrink = $("<p>");
+
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
+
+        instructionsDrink.text(response.drinks[0].strInstructions)
+
+        drinkType.text(response.drinks[0].strAlcoholic)
+
+        drinkTitle.text(response.drinks[0].strDrink);
+
+        drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
+        drinkThumb.attr("width", "250px");
+        drinkThumb.attr("height", "250px");
+
+        $("#mainContent").append(drinkTitle);
+
+        $("#mainContent").append(drinkThumb);
+
+        $("#mainContent").append(drinkType);
+
+
+
+        for (let index = 1; index <= 20; index++) {
+            console.log(response.drinks[0]["strIngredient" + index]);
+            // erika edited to get full igredient list on page, added p tags to get in a list
+
+            if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
+                return;
+            }
+
+            $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</p>');
+            $("#mainContent4").append(instructionsDrink)
+        }
+
+    })
+};
 
 
 
@@ -364,7 +449,7 @@ function drinks(drinkInput) {
 
         }
 
-        
+
     })
 };
 
@@ -417,7 +502,7 @@ function appendSearch() {
 
 
 
-    var appendLeft = $("<button class='recentSearch'>" )
+    var appendLeft = $("<button class='recentSearch'>")
     appendLeft.text(foodStorage[foodStorage.length - 1]);
 
     $("#leftSide").append(appendLeft);
@@ -427,6 +512,22 @@ function appendSearch() {
     $("#leftSide").html("");
     for (let i = 0; i < foodStorage.length; i++) {
         $("#leftSide").append("<p><button class='recentSearch'>" + foodStorage[i] + "</button></p>");
+
+    }
+}
+
+function appendDrinkSearch() {
+
+
+
+    var appendLeft1 = $("<button class='recentSearchDrink'>")
+    appendLeft1.text(drinkStorage[drinkStorage.length - 1]);
+
+    $("#leftSide").append(appendLeft1);
+
+    $("#leftSide").html("");
+    for (let i = 0; i < drinkStorage.length; i++) {
+        $("#leftSide").append("<p><button class='recentSearchDrink'>" + drinkStorage[i] + "</button></p>");
 
     }
 }
