@@ -1,5 +1,5 @@
 
-var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
+var foodStorage = localStorage.getItem("storedFood") || [];
 var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
 appendSearch();
 appendDrinkSearch();
