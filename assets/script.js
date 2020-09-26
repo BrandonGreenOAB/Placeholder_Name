@@ -3,8 +3,8 @@ var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
 var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
 appendSearch();
 
-randomFoodResults = [];
-randomResults = "";
+// randomFoodResults = [];
+// randomResults = "";
 
 var foodStorage = [];
 var drinkStorage = [];
@@ -90,39 +90,18 @@ function randomFood() {
         foodTitle.attr("id", "foodTitle")
 
         foodThumb.attr("src", response.meals[0].strMealThumb);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        foodThumb.attr("width", "350px");
-        foodThumb.attr("height", "350px");
-=======
-        foodThumb.attr("width", "250px");
-        foodThumb.attr("height", "250px");
-
->>>>>>> 51360087958c1c89cbd28cc653fc9306ec32c433
-=======
 
         foodThumb.attr("width", "250px");
         foodThumb.attr("height", "250px");
 
->>>>>>> 2f4b243e3232a056df08897f3847d1ba37b003b4
         $("#mainContent").append(foodTitle);
         $("#mainContent").append(foodThumb);
         $("#mainContent").append(foodType);
         
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
-<<<<<<< HEAD
-<<<<<<< HEAD
-            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
-
-        $("#mainContent3").append(instructions)
-=======
-            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
->>>>>>> 51360087958c1c89cbd28cc653fc9306ec32c433
-=======
 
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
->>>>>>> 2f4b243e3232a056df08897f3847d1ba37b003b4
         }
         $("#mainContent3").append(instructions)
     })
@@ -132,11 +111,11 @@ function randomFood() {
 $("#drinkBtnR").on("click", function (e) {
     e.preventDefault();
 
-    $("#mainContent").empty("")
-    $("#mainContent2").empty("")
-    $("#mainContent3").empty("")
-    $("#mainContent4").empty("")
-    $("#mainContent5").empty("")
+    $("#mainContent").empty("");
+    $("#mainContent2").empty("");
+    $("#mainContent3").empty("");
+    $("#mainContent4").empty("");
+    $("#mainContent5").empty("");
 
 
     //sets a variable that is equal to the value input into the searchBar
@@ -167,19 +146,19 @@ function randomDrink() {
         var instructionsDrink = $("<p>");
         // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
         // ytVideo.attr("src", response.meals[0].strYoutube)
-        instructionsDrink.text(response.drinks[0].strInstructions)
+        instructionsDrink.text("Instructions: " + response.drinks[0].strInstructions)
         drinkType.text("Drink type: " + response.drinks[0].strAlcoholic)
-        drinkTitle.text(response.drinks[0].strDrink);
+        drinkTitle.text("Beverage Name: " + response.drinks[0].strDrink);
         drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
-        drinkThumb.attr("width", "350px");
-        drinkThumb.attr("height", "350px");
+        drinkThumb.attr("width", "250px");
+        drinkThumb.attr("height", "250px");
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
         // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
-            $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</p>');
+            $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
         $("#mainContent5").append(instructionsDrink)
         }
