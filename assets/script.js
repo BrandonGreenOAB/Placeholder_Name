@@ -81,24 +81,38 @@ function randomFood() {
         var foodTitle = $("<h3>");
         var foodType = $("<h4>");
         var instructions = $("<p>");
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
+
         instructions.text(response.meals[0].strInstructions)
+
         foodType.text("Cuisine type: " + response.meals[0].strArea)
+
         foodTitle.text(response.meals[0].strMeal);
+        foodTitle.attr("id", "foodTitle")
+
         foodThumb.attr("src", response.meals[0].strMealThumb);
+<<<<<<< HEAD
         foodThumb.attr("width", "350px");
         foodThumb.attr("height", "350px");
+=======
+        foodThumb.attr("width", "250px");
+        foodThumb.attr("height", "250px");
+
+>>>>>>> 51360087958c1c89cbd28cc653fc9306ec32c433
         $("#mainContent").append(foodTitle);
         $("#mainContent").append(foodThumb);
         $("#mainContent").append(foodType);
-        // $("#mainContent5").append(ytVideo);
+        
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
+<<<<<<< HEAD
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
         $("#mainContent3").append(instructions)
+=======
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
+>>>>>>> 51360087958c1c89cbd28cc653fc9306ec32c433
         }
+        $("#mainContent3").append(instructions)
     })
 };
 
@@ -203,7 +217,7 @@ function food(foodInput) {
 
         for (let index = 1; index <= 20; index++) {
 
-            // erika edited to get full igredient list on page, added p tags to get in a list
+            // to get full igredient list on page, added p tags to get in a list
 
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
