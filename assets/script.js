@@ -165,9 +165,12 @@ function randomDrink() {
         // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
+            if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
+                return;
+            }
             $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
-        $("#mainContent5").append(instructionsDrink)
+            $("#mainContent5").append(instructionsDrink)
         }
     })
 };
@@ -254,6 +257,9 @@ function drinks(drinkInput) {
         // $("#mainContent5").append(ytVideo);
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
+            if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
+                return;
+            }
             $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
 
         $("#mainContent5").append(instructionsDrink)
