@@ -198,3 +198,39 @@ a .fa-2x {
 address, dl, fieldset, figure, ol, p, pre, ul {
     margin: 0 0 5px 0;
 }
+
+.recentSearch {
+    color: firebrick;
+    background-color: transparent;
+    border-color: #b2b2b2;
+    float: left;
+    overflow: visible;
+    font: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .1s ease-in-out;
+    transition-property: color,background-color,border-color;
+}
+
+.recentSearchDrink {
+    color: firebrick;
+    background-color: transparent;
+    border-color: #b2b2b2;
+    float: left;
+    overflow: visible;
+    font: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .1s ease-in-out;
+    transition-property: color,background-color,border-color;
+}

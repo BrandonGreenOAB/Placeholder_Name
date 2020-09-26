@@ -101,7 +101,6 @@ $("#drinkBtnR").on("click", function (e) {
 $(document).on("click", ".recentSearch", function (e) {
     e.preventDefault();
 
-
     $("#mainContent").empty("");
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
