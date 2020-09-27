@@ -2,12 +2,8 @@
 init();
 var foodStorage = localStorage.getItem("storedFood") || [];
 var drinkStorage = localStorage.getItem("storedDrink") || [];
-appendSearch();
-appendDrinkSearch();
 
 var storeArray = [];
-var foodStorage = [];
-var drinkStorage = [];
 //logs the input from searchBar element when the foodBtn is clicked
 
 $("#foodBtn").on("click", function (e) {
@@ -488,7 +484,7 @@ function stored(drinkInput) {
 
 function appendSearch(appendLeft) {
 
-
+console.log("appendSearch");
 
     var appendLeft = $("<button class='recentSearch'>")
     appendLeft.text(foodStorage[foodStorage.length - 1]);
@@ -506,7 +502,7 @@ function appendSearch(appendLeft) {
 
 function appendDrinkSearch() {
 
-
+console.log("appendDrinkSearch");
 
     var appendLeft1 = $("<button class='recentSearchDrink'>")
     appendLeft1.text(drinkStorage[drinkStorage.length - 1]);
@@ -557,6 +553,8 @@ function init() {
             parsedFoodValue = parsedFoodData[index];
 
             console.log(parsedFoodValue);
+            savedAppend(parsedFoodValue);
+            
         }
 
 
@@ -569,32 +567,29 @@ function init() {
             //scan through the parse data and store returned values in a variable called parsedValue
             for (let index = 0; index < parsedDrinkData.length; index++) {
                 parsedDrinkValue = parsedDrinkData[index];
-
-                console.log(parsedDrinkValue);
-            }
-
-            // creates a new function that will turn the values of parsed food and drink data into buttons and append them to to the leftSide column
-            function savedAppend(appendSaved) {
-
-                //creates button with the class of storageValues
-                var appendSaved = $("<button class='storageValues'></button>")
                 
-                //
-                appendSaved.text(parsedFoodData[parsedFoodData.length - 1]);
-                console.log(appendSaved);
-                $("#leftSide").append(appendSaved);
-
-                // erika edited to get text appended to the left side can change back
-
-                $("#leftSide").html("");
-                for (let i = 0; i < parsedFoodData.length; i++) {
-                    $("#leftSide").append("<p><button class='storageValues'>" + parsedFoodData[i] + "</button></p>");
-
-                }
+                console.log(parsedDrinkValue);
+                savedAppend(parsedDrinkData);
             }
-            savedAppend()
+
+           
+            savedAppend();
         }
     }
+
+}
+
+ // creates a new function that will turn the values of parsed food and drink data into buttons and append them to to the leftSide column
+ function savedAppend(text) {
+
+
+    //creates button with the class of storageValues
+    var appendSaved = $("<button class='storageValues'></button>")
+    
+    //
+    appendSaved.text(text);
+    console.log(appendSaved);
+    $("#leftSide").append(appendSaved);
 
 }
 

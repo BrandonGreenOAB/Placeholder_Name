@@ -202,7 +202,7 @@ address, dl, fieldset, figure, ol, p, pre, ul {
     margin: 0 0 5px 0;
 }
 
-.recentSearch {
+.recentSearch, .storageValues {
     color: firebrick;
     background-color: white;
     border-color: #b2b2b2;
