@@ -3,7 +3,7 @@
 init()
 var foodStorage = localStorage.getItem("foodStorage") || [];
 
-var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
+var storedDrink = JSON.parse(localStorage.getItem("storedDrink")) || [];
 
 var storeArray = [];
 //logs the input from searchBar element when the foodBtn is clicked
@@ -456,8 +456,8 @@ function stored(drinkInput) {
     console.log(storedDrink);
   
     // erika edited to prevent duplicates - can be changed back
-    if (drinkStorage.indexOf(drinkInput) === -1) {
-        drinkStorage.push(drinkInput);
+    if (storedDrink.indexOf(drinkInput) === -1) {
+        storedDrink.push(drinkInput);
         localStorage.setItem("storedDrink", JSON.stringify(storedDrink));
     }
 
@@ -512,7 +512,7 @@ function init() {
 
     //sets a variable called textData equal to text contained in the foodStorage key within local storage
     var foodData = localStorage.getItem("foodStorage");
-    var drinkData = localStorage.getItem("drinkStorage");
+    var drinkData = localStorage.getItem("storedDrink");
 
 
     //if textData has a value
