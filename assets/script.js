@@ -1,9 +1,11 @@
 
+init();
 var foodStorage = localStorage.getItem("storedFood") || [];
 var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
 
+var storeArray = [];
 var foodStorage = [];
 var drinkStorage = [];
 //logs the input from searchBar element when the foodBtn is clicked
@@ -484,7 +486,7 @@ function stored(drinkInput) {
 }
 
 
-function appendSearch() {
+function appendSearch(appendLeft) {
 
 
 
@@ -533,4 +535,69 @@ function appendSocialMedia() {
 
     }
 
-} 
+}
+
+// function that checks if there are values stored in local storage and adds them to page upon initialization 
+// when the page opens
+function init() {
+
+
+    //sets a variable called textData equal to text contained in the foodStorage key within local storage
+    var foodData = localStorage.getItem("foodStorage");
+    var drinkData = localStorage.getItem("drinkStorage");
+
+
+    //if textData has a value
+    if (foodData !== null) {
+        //parse local storage values into an array contained within the variable parsedData
+        var parsedFoodData = JSON.parse(foodData);
+
+        //scan through the parse data and store returned values in a variable called parsedValue
+        for (let index = 0; index < parsedFoodData.length; index++) {
+            parsedFoodValue = parsedFoodData[index];
+
+            console.log(parsedFoodValue);
+        }
+
+
+
+        //if textData has a value
+        if (drinkData !== null) {
+            //parse local storage values into an array contained within the variable parsedData
+            var parsedDrinkData = JSON.parse(drinkData);
+
+            //scan through the parse data and store returned values in a variable called parsedValue
+            for (let index = 0; index < parsedDrinkData.length; index++) {
+                parsedDrinkValue = parsedDrinkData[index];
+
+                console.log(parsedDrinkValue);
+            }
+
+            // creates a new function that will turn the values of parsed food and drink data into buttons and append them to to the leftSide column
+            function savedAppend(appendSaved) {
+
+                //creates button with the class of storageValues
+                var appendSaved = $(`<button class='storageValues'>${parsedFoodData[parsedFoodData.length - 1]}</button>`)
+                console.log(appendSaved);
+                //
+                appendSaved.text(parsedFoodData[parsedFoodData.length - 1]);
+                
+               
+              $("#leftSide").append(appendSaved);
+                
+                // erika edited to get text appended to the left side can change back
+
+                $("#leftSide").html("");
+                for (let i = 0; i < parsedFoodData.length; i++) {
+                    $("#leftSide").append("<p><button class='storageValues'>" + parsedFoodData[i] + "</button></p>");
+
+                }
+            }
+            savedAppend();
+        }
+    }
+
+}
+
+
+
