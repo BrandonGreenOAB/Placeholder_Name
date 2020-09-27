@@ -495,11 +495,11 @@ console.log("appendSearch");
 
     //erika edited to get text appended to the left side can change back
 
-    $("#leftSide").html("");
-    for (let i = 0; i < foodStorage.length; i++) {
-        $("#leftSide").append("<p><button class='recentSearch'>" + foodStorage[i] + "</button></p>");
+    // $("#leftSide").html("");
+    // for (let i = 0; i < foodStorage.length; i++) {
+    //     $("#leftSide").append("<p><button class='recentSearch'>" + foodStorage[i] + "</button></p>");
 
-    }
+    // }
 }
 
 function appendDrinkSearch() {
@@ -511,11 +511,11 @@ console.log("appendDrinkSearch");
 
     $("#leftSide").append(appendLeft1);
 
-    $("#leftSide").html("");
-    for (let i = 0; i < drinkStorage.length; i++) {
-        $("#leftSide").append("<p><button class='recentSearchDrink'>" + drinkStorage[i] + "</button></p>");
+    // $("#leftSide").html("");
+    // for (let i = 0; i < drinkStorage.length; i++) {
+    //     $("#leftSide").append("<p><button class='recentSearchDrink'>" + drinkStorage[i] + "</button></p>");
 
-    }
+    // }
 }
 
 
@@ -588,7 +588,7 @@ function init() {
     //creates button with the class of storageValues
     var appendSaved = $("<button class='storageValues'></button>")
     
-    //
+    //makes the text of appendSaved text and appends it to the leftside column as
     appendSaved.text(text);
     console.log(appendSaved);
     $("#leftSide").append(appendSaved);
