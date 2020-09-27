@@ -67,7 +67,6 @@ $("#foodBtnR").on("click", function (e) {
     //calls the randomFood function
     randomFood();
     store(foodInput);
-    appendSearch();
 
 })
 
@@ -88,7 +87,6 @@ $("#drinkBtnR").on("click", function (e) {
     //calls the randomFood function
     randomDrink();
     stored(drinkInput);
-    appendDrinkSearch();
 
 });
 
