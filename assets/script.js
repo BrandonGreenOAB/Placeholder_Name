@@ -4,8 +4,8 @@ var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
 
-var foodStorage = [];
-var drinkStorage = [];
+// var foodStorage = [];
+// var drinkStorage = [];
 //logs the input from searchBar element when the foodBtn is clicked
 
 $("#foodBtn").on("click", function (e) {
@@ -441,7 +441,7 @@ function drinks(drinkInput) {
 
 function store(foodInput) {
 
-    var searchlocal = localStorage.getItem("storedFood")
+    var searchlocal = JSON.parse(localStorage.getItem("storedFood"))
     console.log(searchlocal);
     if (searchlocal === null) {
         foodStorage = [foodInput];
@@ -449,7 +449,7 @@ function store(foodInput) {
         foodStorage.push(foodInput)
     }
     console.log(foodStorage);
-    localStorage.setItem("storedFood", foodStorage);
+    localStorage.setItem("storedFood", JSON.stringify(foodStorage));
 
 
 
@@ -468,7 +468,7 @@ function stored(drinkInput) {
     if (searchlocal === null) {
         drinkStorage = [drinkInput];
     } else {
-        drinkStorage.push(drinkStorage)
+        drinkStorage.push(drinkInput)
     }
     console.log(drinkStorage);
     localStorage.setItem("storedDrink", drinkStorage);
@@ -478,7 +478,7 @@ function stored(drinkInput) {
     // erika edited to prevent duplicates - can be changed back
     if (drinkStorage.indexOf(drinkInput) === -1) {
         drinkStorage.push(drinkInput);
-        localStorage.setItem("storedDrink", drinkStorage);
+        localStorage.setItem("storedDrink", JSON.stringify(drinkStorage));
     }
 
 }
