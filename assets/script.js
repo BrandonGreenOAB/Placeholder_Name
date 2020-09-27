@@ -1,10 +1,11 @@
-var foodStorage = localStorage.getItem("FoodStorage") || [];
-var drinkStorage = localStorage.getItem("storedDrink") || [];
-appendSearch();
-appendDrinkSearch();
 
-var foodStorage = [];
-var drinkStorage = [];
+
+init()
+var foodStorage = localStorage.getItem("foodStorage") || [];
+
+var drinkStorage = localStorage.getItem("storedDrink") || [];
+
+var storeArray = [];
 //logs the input from searchBar element when the foodBtn is clicked
 
 $("#foodBtn").on("click", function (e) {
@@ -483,9 +484,9 @@ function stored(drinkInput) {
 }
 
 
-function appendSearch() {
+function appendSearch(appendLeft) {
 
-
+console.log("appendSearch");
 
     var appendLeft = $("<button class='recentSearch'>")
     appendLeft.text(foodStorage[foodStorage.length - 1]);
@@ -503,7 +504,7 @@ function appendSearch() {
 
 function appendDrinkSearch() {
 
-
+console.log("appendDrinkSearch");
 
     var appendLeft1 = $("<button class='recentSearchDrink'>")
     appendLeft1.text(drinkStorage[drinkStorage.length - 1]);
@@ -532,4 +533,67 @@ function appendSocialMedia() {
 
     }
 
-} 
+}
+
+// function that checks if there are values stored in local storage and adds them to page upon initialization 
+// when the page opens
+function init() {
+
+
+    //sets a variable called textData equal to text contained in the foodStorage key within local storage
+    var foodData = localStorage.getItem("foodStorage");
+    var drinkData = localStorage.getItem("drinkStorage");
+
+
+    //if textData has a value
+    if (foodData !== null) {
+        //parse local storage values into an array contained within the variable parsedData
+        var parsedFoodData = JSON.parse(foodData);
+
+        //scan through the parse data and store returned values in a variable called parsedValue
+        for (let index = 0; index < parsedFoodData.length; index++) {
+            parsedFoodValue = parsedFoodData[index];
+
+            console.log(parsedFoodValue);
+            savedAppend(parsedFoodValue);
+            
+        }
+
+
+
+        //if textData has a value
+        if (drinkData !== null) {
+            //parse local storage values into an array contained within the variable parsedData
+            var parsedDrinkData = JSON.parse(drinkData);
+
+            //scan through the parse data and store returned values in a variable called parsedValue
+            for (let index = 0; index < parsedDrinkData.length; index++) {
+                parsedDrinkValue = parsedDrinkData[index];
+                
+                console.log(parsedDrinkValue);
+                savedAppend(parsedDrinkData);
+            }
+
+           
+            savedAppend();
+        }
+    }
+
+}
+
+ // creates a new function that will turn the values of parsed food and drink data into buttons and append them to to the leftSide column
+ function savedAppend(text) {
+
+
+    //creates button with the class of storageValues
+    var appendSaved = $("<button class='storageValues'></button>")
+    
+    //
+    appendSaved.text(text);
+    console.log(appendSaved);
+    $("#leftSide").append(appendSaved);
+
+}
+
+
+
