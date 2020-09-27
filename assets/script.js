@@ -598,7 +598,7 @@ function getStoredFood(buttonText) {
         url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + buttonText
 
         //then creates a function 
-    }).then(function (response) {
+    }).then(function(response) {
 
 
         var foodThumb = $("<img>");
