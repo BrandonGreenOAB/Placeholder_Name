@@ -158,52 +158,6 @@ img {
     text-align: center;
 
 }
-.twitterDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: row;
-    padding: 5px;
-    margin-right: 40px;
-    float: left;
-}
-.linkedinDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: row;
-    padding: 4px;
-    margin-right: 30px;
-    margin-top: 4px;
-    float: left;
-    transform: scale(1.4);
-}
-
-.facebookDiv {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: row;
-padding: 5px;
-margin-right: 50px;
-float: left;
-}
-.bookDiv, .dessertDiv, .veggieDiv, .youtubeDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: row;
-    padding: 5px;
-    margin-right: 0px;
-    float: left;
-}
-/* this changes color of font awesome icons from blue to black */
-a .fa-2x {
-    color:black;
-    }
-#bookBtn, #dessertBtn, #veggieBtn, #youtubeBtn {
-    border-color: white;
-}
 
 * {
     font-family: 'Oxygen', sans-serif;
@@ -216,7 +170,7 @@ address, dl, fieldset, figure, ol, p, pre, ul {
     margin: 0 0 5px 0;
 }
 
-.recentSearch {
+.recentSearch, .storageValues {
     color: firebrick;
     background-color: white;
     border-color: #b2b2b2;
@@ -249,3 +203,88 @@ address, dl, fieldset, figure, ol, p, pre, ul {
     transition: .1s ease-in-out;
     transition-property: color,background-color,border-color;
 }
+
+@media only screen and (max-width: 650px) {
+
+    
+    #logoTitle {
+        font-family: 'Patrick Hand', cursive;
+        font-size: 36px;
+        color: firebrick;
+        font-weight: bold;
+        padding-bottom: 20px;
+
+    }
+
+    #searchBar {
+        width: 300px
+    }
+
+    #logoTitle {
+        left: 80px;
+    }
+    
+    #fullContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+    }    
+
+    #leftSide {
+        height: 200px;
+        
+    }
+    #mainBox {
+        height: 100%;
+        width: 320px;
+        margin-left: 1rem;
+        background-image: url(../assets/double-bubble-outline.png);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+    }
+    #mainContent {
+        display: flex;
+        width: 225px;
+        flex-wrap: wrap;
+        flex-direction: inherit;
+        justify-content: center;
+        text-align: right;
+        align-items: center;
+        margin-left: 0px;
+    }
+    #mainContent2 {
+        display: flex;
+        width: 100%;
+        flex-flow: column;
+        text-align: left;
+    }
+    #mainContent3 {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        flex-flow: column;
+        text-align: left;
+    }
+
+    #socialmedia {
+        height: 350px;
+        display: flex;
+        width: 320px;
+        margin-top: 1rem;
+        background-image: url(../assets/double-bubble-outline.png);
+        border-radius: 15px;
+        align-items: center;
+        align-content: center;
+        margin-left: 1rem;
+        flex-wrap: wrap;
+        flex-direction: unset;
+    }
+
+    .recentSearch, .recentSearchDrink {
+        margin-left: 2rem;
+    }
+
+  }
