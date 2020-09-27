@@ -562,7 +562,83 @@ function init() {
     console.log(appendSaved);
     $("#leftSide").append(appendSaved);
 
+
 }
 
+//when the recentButton is clicked, so something
+$(document).on("click", ".storageValues", function (e) {
+    e.preventDefault();
 
+    $("#mainContent").empty("");
+    $("#mainContent2").empty("");
+    $("#mainContent3").empty("");
+    $("#mainContent4").empty("");
+
+
+    //sets a variable that is equal to the value of the button's text
+    buttonText = $(this).text();
+
+    //calls gettRecFood function
+    getStoredFood(buttonText);
+
+    
+
+});
+
+
+function getStoredFood(buttonText) {
+
+
+
+    //creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
+    $.ajax({
+
+        method: "GET",
+        url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + buttonText
+
+        //then creates a function 
+    }).then(function (response) {
+
+
+        var foodThumb = $("<img>");
+
+        var foodTitle = $("<h3>");
+
+        var foodType = $("<h4>");
+
+        var instructions = $("<p>");
+
+        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
+        // ytVideo.attr("src", response.meals[0].strYoutube)
+
+        instructions.text(response.meals[0].strInstructions)
+
+        foodType.text("Cuisine type: " + response.meals[0].strArea)
+
+        foodTitle.text(response.meals[0].strMeal);
+
+        foodThumb.attr("src", response.meals[0].strMealThumb);
+        foodThumb.attr("width", "250px");
+        foodThumb.attr("height", "250px");
+
+        $("#mainContent").append(foodTitle);
+
+        $("#mainContent").append(foodThumb);
+
+        $("#mainContent").append(foodType);
+
+
+
+        for (let index = 1; index <= 20; index++) {
+            console.log(response.meals[0]["strIngredient" + index]);
+            // erika edited to get full igredient list on page, added p tags to get in a list
+
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
+
+        }
+
+        $("#mainContent4").append(instructions)
+
+    })
+};
 
