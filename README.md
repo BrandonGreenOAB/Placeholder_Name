@@ -3,6 +3,8 @@
 
 ## Description
 The Peckish application helps users search for and discover new and exciting food and drink recipes without having to purchase a cookbook. This is project 1 for the UCF Fullstack Web Development Bootcamp. Contributors for this project are Alyssa DeMetro, Brandon Green, Bridget Shannon, and Erika Zibelnik.
+- Github Repository: https://github.com/BrandonGreenOAB/Peckish
+- Github Page: https://brandongreenoab.github.io/Peckish/ 
 
 ## APIs and Libraries
 - TheMealDB API
