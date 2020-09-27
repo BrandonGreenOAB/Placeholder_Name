@@ -108,12 +108,12 @@ img {
     flex-direction: inherit;
     margin-left: 35%;
     justify-content: center;
-    text-align: center;
+    text-align: right;
     align-items: center;
 }
 #mainContent2 {
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-flow: column;
     text-align: left;
     text-indent: 5px;
@@ -121,11 +121,11 @@ img {
 #mainContent3 {
     margin-top: 1%;
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-wrap: wrap;
     flex-flow: column;
     flex-basis: unset;
-    text-align: center;
+    text-align: left;
 }
 #mainContent4 {
     display: flex;
@@ -191,6 +191,9 @@ a .fa-2x {
     border-color: white;
 }
 
+* {
+    font-family: 'Oxygen', sans-serif;
+}
 
 *+address, *+dl, *+fieldset, *+figure, *+ol, *+p, *+pre, *+ul {
     margin-top: 5px;
