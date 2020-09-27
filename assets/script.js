@@ -1,7 +1,4 @@
 
-init();
-var foodStorage = localStorage.getItem("storedFood") || [];
-var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
 
