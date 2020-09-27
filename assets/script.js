@@ -1,5 +1,4 @@
-
-var foodStorage = localStorage.getItem("storedFood") || [];
+var foodStorage = localStorage.getItem("FoodStorage") || [];
 var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
