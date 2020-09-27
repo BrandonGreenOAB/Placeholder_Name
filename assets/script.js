@@ -1,11 +1,8 @@
 
 var foodStorage = localStorage.getItem("storedFood") || [];
-var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
+var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
-
-// randomFoodResults = [];
-// randomResults = "";
 
 var foodStorage = [];
 var drinkStorage = [];
@@ -20,8 +17,6 @@ $("#foodBtn").on("click", function (e) {
     $("#mainContent2").html("")
     $("#mainContent3").html("")
     $("#mainContent4").html("")
-
-
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val().trim();
@@ -445,6 +440,7 @@ function drinks(drinkInput) {
 
             $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
             $("#mainContent3").append(instructionsDrink);
+
 
         }
 

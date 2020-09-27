@@ -201,7 +201,7 @@ address, dl, fieldset, figure, ol, p, pre, ul {
 
 .recentSearch {
     color: firebrick;
-    background-color: transparent;
+    background-color: white;
     border-color: #b2b2b2;
     float: left;
     overflow: visible;
@@ -218,8 +218,8 @@ address, dl, fieldset, figure, ol, p, pre, ul {
 }
 
 .recentSearchDrink {
-    color: firebrick;
-    background-color: transparent;
+    color: black;
+    background-color: white;
     border-color: #b2b2b2;
     float: left;
     overflow: visible;
