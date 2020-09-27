@@ -46,7 +46,6 @@ $("#drinkBtn").on("click", function (e) {
     //calls the randomFood function
     
     drinks(drinkInput);
-    appendDrinkSearch();
     stored(drinkInput);
 
 });
@@ -546,6 +545,8 @@ function init() {
 
            
             savedAppend();
+            appendDrinkSearch();
+            
         }
     }
 
