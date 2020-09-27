@@ -1,11 +1,7 @@
-
-var foodStorage = JSON.parse(localStorage.getItem("storedFood")) || [];
-var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
+var foodStorage = localStorage.getItem("FoodStorage") || [];
+var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
-
-// randomFoodResults = [];
-// randomResults = "";
 
 var foodStorage = [];
 var drinkStorage = [];
@@ -20,8 +16,6 @@ $("#foodBtn").on("click", function (e) {
     $("#mainContent2").html("")
     $("#mainContent3").html("")
     $("#mainContent4").html("")
-
-
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val().trim();
@@ -100,7 +94,6 @@ $("#drinkBtnR").on("click", function (e) {
 //when the recentButton is clicked, so something
 $(document).on("click", ".recentSearch", function (e) {
     e.preventDefault();
-
 
     $("#mainContent").empty("");
     $("#mainContent2").empty("");
@@ -386,7 +379,7 @@ function food(foodInput) {
 
         // $("#mainContent5").append(ytVideo);
 
-        for (let index = 1; index <= 10; index++) {
+        for (let index = 1; index <= 20; index++) {
 
 
             // to get full igredient list on page, added p tags to get in a list
@@ -397,18 +390,9 @@ function food(foodInput) {
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
 
         }
-        for (let index = 11; index <= 20; index++) {
 
-            // to get full igredient list on page, added p tags to get in a list
-            if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
-                return;
-            }
 
-            $('#mainContent3').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
-
-        }
-
-        $("#mainContent4").append(instructions)
+        $("#mainContent3").append(instructions)
 
     })
 };
@@ -446,6 +430,7 @@ function drinks(drinkInput) {
 
             $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
             $("#mainContent3").append(instructionsDrink);
+
 
         }
 

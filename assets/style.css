@@ -29,6 +29,20 @@
     text-align: center;
 }
 
+#blueBird {
+    margin-left: 5px;
+    margin-top: 8px;
+}
+
+#logoTitle {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 36px;
+    color: firebrick;
+    font-weight: bold;
+    position: relative;
+    right: 75%;
+}
+
 .twitterDiv {
     display: flex;
     justify-content: center;
@@ -108,12 +122,12 @@ img {
     flex-direction: inherit;
     margin-left: 35%;
     justify-content: center;
-    text-align: center;
+    text-align: right;
     align-items: center;
 }
 #mainContent2 {
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-flow: column;
     text-align: left;
     text-indent: 5px;
@@ -121,11 +135,11 @@ img {
 #mainContent3 {
     margin-top: 1%;
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-wrap: wrap;
     flex-flow: column;
     flex-basis: unset;
-    text-align: center;
+    text-align: left;
 }
 #mainContent4 {
     display: flex;
@@ -145,10 +159,47 @@ img {
 
 }
 
+* {
+    font-family: 'Oxygen', sans-serif;
+}
 
 *+address, *+dl, *+fieldset, *+figure, *+ol, *+p, *+pre, *+ul {
     margin-top: 5px;
 }
 address, dl, fieldset, figure, ol, p, pre, ul {
     margin: 0 0 5px 0;
+}
+
+.recentSearch {
+    color: firebrick;
+    background-color: white;
+    border-color: #b2b2b2;
+    overflow: visible;
+    font: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .1s ease-in-out;
+    transition-property: color,background-color,border-color;
+}
+
+.recentSearchDrink {
+    color: black;
+    background-color: white;
+    border-color: #b2b2b2;
+    overflow: visible;
+    font: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .1s ease-in-out;
+    transition-property: color,background-color,border-color;
 }
