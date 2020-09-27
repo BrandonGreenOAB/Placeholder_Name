@@ -1,4 +1,5 @@
-var foodStorage = localStorage.getItem("FoodStorage") || [];
+$(document).ready( function () {
+var foodStorage = localStorage.getItem("foodStorage") || [];
 var drinkStorage = localStorage.getItem("storedDrink") || [];
 appendSearch();
 appendDrinkSearch();
@@ -440,7 +441,7 @@ function drinks(drinkInput) {
 
 function store(foodInput) {
 
-    var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
+    var searchlocal = localStorage.getItem("storedFood")
     console.log(searchlocal);
     if (searchlocal === null) {
         foodStorage = [foodInput];
@@ -448,7 +449,7 @@ function store(foodInput) {
         foodStorage.push(foodInput)
     }
     console.log(foodStorage);
-    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+    localStorage.setItem("storedFood", foodStorage);
 
 
 
@@ -462,22 +463,22 @@ function store(foodInput) {
 
 function stored(drinkInput) {
 
-    var searchlocal = JSON.parse(localStorage.getItem("drinkStorage"))
+    var searchlocal = localStorage.getItem("storedDrink")
     console.log(searchlocal);
     if (searchlocal === null) {
         drinkStorage = [drinkInput];
     } else {
-        drinkStorage.push(drinkInput)
+        drinkStorage.push(drinkStorage)
     }
     console.log(drinkStorage);
-    localStorage.setItem("drinkStorage", JSON.stringify(drinkStorage));
+    localStorage.setItem("storedDrink", drinkStorage);
 
 
 
     // erika edited to prevent duplicates - can be changed back
     if (drinkStorage.indexOf(drinkInput) === -1) {
         drinkStorage.push(drinkInput);
-        localStorage.setItem("storedDrink", JSON.stringify(drinkStorage));
+        localStorage.setItem("storedDrink", drinkStorage);
     }
 
 }
@@ -506,7 +507,7 @@ function appendDrinkSearch() {
 
 
     var appendLeft1 = $("<button class='recentSearchDrink'>")
-    appendLeft1.text(drinkStorage[drinkStorage.length - 1]);
+    appendLeft1.text(drinkStorage[drinkStorage.length -1]);
 
     $("#leftSide").append(appendLeft1);
 
@@ -533,3 +534,4 @@ function appendSocialMedia() {
     }
 
 } 
+});
