@@ -29,6 +29,20 @@
     text-align: center;
 }
 
+#blueBird {
+    margin-left: 5px;
+    margin-top: 8px;
+}
+
+#logoTitle {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 36px;
+    color: firebrick;
+    font-weight: bold;
+    position: relative;
+    right: 75%;
+}
+
 .twitterDiv {
     display: flex;
     justify-content: center;
@@ -206,7 +220,6 @@ address, dl, fieldset, figure, ol, p, pre, ul {
     color: firebrick;
     background-color: white;
     border-color: #b2b2b2;
-    float: left;
     overflow: visible;
     font: inherit;
     display: inline-block;
@@ -224,7 +237,6 @@ address, dl, fieldset, figure, ol, p, pre, ul {
     color: black;
     background-color: white;
     border-color: #b2b2b2;
-    float: left;
     overflow: visible;
     font: inherit;
     display: inline-block;
