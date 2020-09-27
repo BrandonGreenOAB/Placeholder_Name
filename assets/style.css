@@ -144,52 +144,6 @@ img {
     text-align: center;
 
 }
-.twitterDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: row;
-    padding: 5px;
-    margin-right: 40px;
-    float: left;
-}
-.linkedinDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: row;
-    padding: 4px;
-    margin-right: 30px;
-    margin-top: 4px;
-    float: left;
-    transform: scale(1.4);
-}
-
-.facebookDiv {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: row;
-padding: 5px;
-margin-right: 50px;
-float: left;
-}
-.bookDiv, .dessertDiv, .veggieDiv, .youtubeDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: row;
-    padding: 5px;
-    margin-right: 0px;
-    float: left;
-}
-/* this changes color of font awesome icons from blue to black */
-a .fa-2x {
-    color:black;
-    }
-#bookBtn, #dessertBtn, #veggieBtn, #youtubeBtn {
-    border-color: white;
-}
 
 
 *+address, *+dl, *+fieldset, *+figure, *+ol, *+p, *+pre, *+ul {
