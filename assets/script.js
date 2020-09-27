@@ -23,10 +23,7 @@ $("#foodBtn").on("click", function (e) {
 
 
     food(foodInput);
-
     store(foodInput);
-
-    appendSearch();
 
 });
 
@@ -441,6 +438,12 @@ function store(foodInput) {
     var foodStorage = JSON.parse(localStorage.getItem("foodStorage")) || []
     console.log(foodStorage);
 
+    if (foodInput.length > 3){
+        console.log("not defined")
+        } else {
+        store(foodInput)
+        }
+
     if (foodStorage.indexOf(foodInput) === -1) {
         foodStorage.push(foodInput);
         localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
@@ -453,6 +456,12 @@ function stored(drinkInput) {
 
     var storedDrink = JSON.parse(localStorage.getItem("storedDrink")) || []
     console.log(storedDrink);
+
+    if (drinkInput.length > 3){
+        console.log("not defined")
+        } else {
+        store(drinkInput)
+        }
   
     // erika edited to prevent duplicates - can be changed back
     if (storedDrink.indexOf(drinkInput) === -1) {
