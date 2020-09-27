@@ -3,7 +3,7 @@
 init()
 var foodStorage = localStorage.getItem("foodStorage") || [];
 
-var drinkStorage = localStorage.getItem("storedDrink") || [];
+var drinkStorage = JSON.parse(localStorage.getItem("storedDrink")) || [];
 
 var storeArray = [];
 //logs the input from searchBar element when the foodBtn is clicked
@@ -44,9 +44,10 @@ $("#drinkBtn").on("click", function (e) {
     var drinkInput = $("#searchBar").val().trim();
 
     //calls the randomFood function
-    stored(drinkInput);
+    
     drinks(drinkInput);
     appendDrinkSearch();
+    stored(drinkInput);
 
 });
 
@@ -451,13 +452,13 @@ function store(foodInput) {
 
 function stored(drinkInput) {
 
-    var drinkStorage = JSON.parse(localStorage.getItem("drinkStorage")) || []
-    console.log(drinkStorage);
+    var storedDrink = JSON.parse(localStorage.getItem("storedDrink")) || []
+    console.log(storedDrink);
   
     // erika edited to prevent duplicates - can be changed back
     if (drinkStorage.indexOf(drinkInput) === -1) {
         drinkStorage.push(drinkInput);
-        localStorage.setItem("storedDrink", JSON.stringify(drinkStorage));
+        localStorage.setItem("storedDrink", JSON.stringify(storedDrink));
     }
 
     appendDrinkSearch();
@@ -478,11 +479,11 @@ function appendSearch() {
 
 function appendDrinkSearch() {
 
-    drinkStorage = JSON.parse(localStorage.getItem("drinkStorage"))
-    console.log(drinkStorage)
+    storedDrink = JSON.parse(localStorage.getItem("storedDrink"))
+    console.log(storedDrink)
     $("#leftSide").html("");
-    for (let i = 0; i < drinkStorage.length; i++) {
-        $("#leftSide").append("<p><button class='recentSearchDrink'>" + drinkStorage[i] + "</button></p>");
+    for (let i = 0; i < storedDrink.length; i++) {
+        $("#leftSide").append("<p><button class='recentSearchDrink'>" + storedDrink[i] + "</button></p>");
 
     }
 }
