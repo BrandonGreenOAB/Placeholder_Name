@@ -1,6 +1,6 @@
 #leftSide {
     height: 950px;
-    width: 250px;
+    width: 95%;
     margin-left: 25%;
     background-image: url(../assets/double-bubble-outline.png);
     margin-bottom: 1rem;
@@ -9,7 +9,7 @@
 
 #mainBox {
     height: 950px;
-    width: 1505px;
+    width: 93%;
     margin-left: 6rem;
     background-image: url(../assets/double-bubble-outline.png);
     border-radius: 15px;
@@ -203,7 +203,7 @@ address, dl, fieldset, figure, ol, p, pre, ul {
     transition-property: color,background-color,border-color;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 300px) {
 
     
     #logoTitle {
@@ -284,6 +284,184 @@ address, dl, fieldset, figure, ol, p, pre, ul {
 
     .recentSearch, .recentSearchDrink {
         margin-left: 2rem;
+    }
+
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    
+    #logoTitle {
+        font-family: 'Patrick Hand', cursive;
+        font-size: 36px;
+        color: firebrick;
+        font-weight: bold;
+        padding-bottom: 20px;
+
+    }
+
+    #searchBar {
+        width: 350px
+    }
+
+    #logoTitle {
+        left: 250px;
+    }
+    
+    #fullContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+    }    
+
+    #leftSide {
+        height: 150px;
+        width: 730px;
+        margin-left: 15px;
+        
+    }
+    #mainBox {
+        height: 100%;
+        width: 95%;
+        margin-left: 1rem;
+        background-image: url(../assets/double-bubble-outline.png);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+    }
+    #mainContent {
+        display: flex;
+        width: 225px;
+        flex-wrap: wrap;
+        flex-direction: inherit;
+        justify-content: center;
+        text-align: right;
+        align-items: center;
+        margin-left: 25%;
+    }
+    #mainContent2 {
+        display: flex;
+        width: 100%;
+        flex-flow: column;
+        text-align: left;
+    }
+    #mainContent3 {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        flex-flow: column;
+        text-align: left;
+    }
+
+    #socialmedia {
+        height: 100%;
+        display: flex;
+        width: 95%;
+        margin-top: 1rem;
+        background-image: url(../assets/double-bubble-outline.png);
+        border-radius: 15px;
+        align-items: center;
+        align-content: center;
+        margin-left: 1rem;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    #smText {
+        width: 100%;
+    }
+
+    .recentSearch, .recentSearchDrink {
+        margin-left: 2rem;
+    }
+
+  }
+
+  @media only screen and (max-width: 1440px) {
+
+    
+    #logoTitle {
+        font-family: 'Patrick Hand', cursive;
+        font-size: 36px;
+        color: firebrick;
+        font-weight: bold;
+        padding-bottom: 20px;
+
+    }
+
+    #searchBar {
+        width: 300px
+    }
+
+    #fullContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+    }    
+
+    #leftSide {
+        height: 200px;
+        width: 100%;
+        margin-left: 2rem;
+        
+    }
+    #mainBox {
+        height: 100%;
+        width: 96%;
+        margin-left: 2rem;
+        background-image: url(../assets/double-bubble-outline.png);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+    }
+    #mainContent {
+        display: flex;
+        width: 225px;
+        flex-wrap: wrap;
+        flex-direction: inherit;
+        justify-content: center;
+        text-align: right;
+        align-items: center;
+        margin-left: 37%;
+    }
+    #mainContent2 {
+        display: flex;
+        width: 100%;
+        flex-flow: column;
+        text-align: left;
+    }
+    #mainContent3 {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        flex-flow: column;
+        text-align: left;
+    }
+
+    #socialmedia {
+        height: 100%;
+        display: flex;
+        width: 96%;
+        margin-top: 1rem;
+        background-image: url(../assets/double-bubble-outline.png);
+        border-radius: 15px;
+        align-items: center;
+        align-content: center;
+        margin-left: 2rem;
+        flex-wrap: wrap;
+        flex-direction: unset;
+    }
+
+    .recentSearch, .recentSearchDrink {
+        margin-left: 2rem;
+    }
+
+    #smText {
+        width: 100%;
     }
 
   }
