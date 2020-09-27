@@ -1,6 +1,8 @@
 
-init();
-var foodStorage = localStorage.getItem("storedFood") || [];
+
+init()
+var foodStorage = localStorage.getItem("foodStorage") || [];
+
 var drinkStorage = localStorage.getItem("storedDrink") || [];
 
 var storeArray = [];
