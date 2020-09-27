@@ -438,82 +438,53 @@ function drinks(drinkInput) {
 };
 
 function store(foodInput) {
-
-    var searchlocal = JSON.parse(localStorage.getItem("foodStorage"))
-    console.log(searchlocal);
-    if (searchlocal === null) {
-        foodStorage = [foodInput];
-    } else {
-        foodStorage.push(foodInput)
-    }
+    var foodStorage = JSON.parse(localStorage.getItem("foodStorage")) || []
     console.log(foodStorage);
-    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
 
-
-
-    // erika edited to prevent duplicates - can be changed back
     if (foodStorage.indexOf(foodInput) === -1) {
         foodStorage.push(foodInput);
-        localStorage.setItem("storedFood", JSON.stringify(foodStorage));
+        localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
     }
-
+    
+    appendSearch();
 }
 
 function stored(drinkInput) {
 
-    var searchlocal = JSON.parse(localStorage.getItem("drinkStorage"))
-    console.log(searchlocal);
-    if (searchlocal === null) {
-        drinkStorage = [drinkInput];
-    } else {
-        drinkStorage.push(drinkInput)
-    }
+    var searchlocal = JSON.parse(localStorage.getItem("drinkStorage")) || []
     console.log(drinkStorage);
-    localStorage.setItem("drinkStorage", JSON.stringify(drinkStorage));
-
-
-
+  
     // erika edited to prevent duplicates - can be changed back
     if (drinkStorage.indexOf(drinkInput) === -1) {
         drinkStorage.push(drinkInput);
         localStorage.setItem("storedDrink", JSON.stringify(drinkStorage));
     }
 
+    appendSearch();
 }
 
 
-function appendSearch(appendLeft) {
+function appendSearch() {
 
-console.log("appendSearch");
+    //to get text appended to the left side 
+    foodStorage = JSON.parse(localStorage.getItem("foodStorage"))
+    console.log(foodStorage)
+    $("#leftSide").html("");
+    for (let i = 0; i < foodStorage.length; i++) {
+        $("#leftSide").append("<p><button class='recentSearch'>" + foodStorage[i] + "</button></p>");
 
-    var appendLeft = $("<button class='recentSearch'>")
-    appendLeft.text(foodStorage[foodStorage.length - 1]);
-
-    $("#leftSide").append(appendLeft);
-
-    //erika edited to get text appended to the left side can change back
-
-    // $("#leftSide").html("");
-    // for (let i = 0; i < foodStorage.length; i++) {
-    //     $("#leftSide").append("<p><button class='recentSearch'>" + foodStorage[i] + "</button></p>");
-
-    // }
+    }
 }
 
 function appendDrinkSearch() {
 
-console.log("appendDrinkSearch");
+    drinkStorage = JSON.parse(localStorage.getItem("drinkStorage"))
+    console.log(drinkStorage)
+    $("#leftSide").html("");
+    for (let i = 0; i < drinkStorage.length; i++) {
+        $("#leftSide").append("<p><button class='recentSearchDrink'>" + drinkStorage[i] + "</button></p>");
 
-    var appendLeft1 = $("<button class='recentSearchDrink'>")
-    appendLeft1.text(drinkStorage[drinkStorage.length - 1]);
-
-    $("#leftSide").append(appendLeft1);
-
-    // $("#leftSide").html("");
-    // for (let i = 0; i < drinkStorage.length; i++) {
-    //     $("#leftSide").append("<p><button class='recentSearchDrink'>" + drinkStorage[i] + "</button></p>");
-
-    // }
+    }
 }
 
 
