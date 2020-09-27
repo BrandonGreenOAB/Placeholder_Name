@@ -34,14 +34,14 @@ $("#foodBtn").on("click", function (e) {
 $("#drinkBtn").on("click", function (e) {
     e.preventDefault();
 
-    $("#mainContent").empty("");
-    $("#mainContent2").empty("");
-    $("#mainContent3").empty("");
-    $("#mainContent4").empty("");
+    $("#mainContent").html("");
+    $("#mainContent2").html("");
+    $("#mainContent3").html("");
+    $("#mainContent4").html("");
 
 
     //sets a variable that is equal to the value input into the searchBar
-    var drinkInput = $("#searchBar").val();
+    var drinkInput = $("#searchBar").val().trim();
 
     //calls the randomFood function
     stored(drinkInput);
@@ -451,7 +451,7 @@ function store(foodInput) {
 
 function stored(drinkInput) {
 
-    var searchlocal = JSON.parse(localStorage.getItem("drinkStorage")) || []
+    var drinkStorage = JSON.parse(localStorage.getItem("drinkStorage")) || []
     console.log(drinkStorage);
   
     // erika edited to prevent duplicates - can be changed back
@@ -460,7 +460,7 @@ function stored(drinkInput) {
         localStorage.setItem("storedDrink", JSON.stringify(drinkStorage));
     }
 
-    appendSearch();
+    appendDrinkSearch();
 }
 
 
