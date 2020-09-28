@@ -289,8 +289,11 @@ function randomFood() {
         for (let index = 1; index <= 20; index++) {
             // erika edited to get full igredient list on page, added p tags to get in a list
 
-            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + " " + '</p>');
+            $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
+
         }
+
+
         $("#mainContent3").append(instructions)
     })
 };
@@ -326,9 +329,8 @@ function randomDrink() {
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
                 return;
             }
-            $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + " " + '</p>');
-
-            $("#mainContent4").append(instructionsDrink)
+            $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
+            $("#mainContent3").append(instructionsDrink);
         }
     })
 };
