@@ -221,80 +221,78 @@ function getRecDrink() {
     })
 };
 
-//create a function the connects the searchBar input to the food function when foodBtnR is clicked
+//create randomFood function to display different foods that aren't ingredient driven
 function randomFood() {
-
+    //creates a request for information from the mealdb endpoint 
     $.ajax({
 
         method: "GET",
         url: "https://www.themealdb.com/api/json/v1/1/random.php"
-
+    //then runs information through a function
     }).then(function (response) {
         console.log(response);
+        // variables equal to newly created tags
         var foodThumb = $("<img>");
         var foodTitle = $("<h3>");
         var foodType = $("<h4>");
         var instructions = $("<p>");
-
+        // pulling instructions, area, and meal to become text
         instructions.text(response.meals[0].strInstructions)
-
         foodType.text("Cuisine type: " + response.meals[0].strArea)
-
         foodTitle.text(response.meals[0].strMeal);
+        // food title and meal thumb along with heigh and width as attributes
         foodTitle.attr("id", "foodTitle")
-
         foodThumb.attr("src", response.meals[0].strMealThumb);
-
         foodThumb.attr("width", "250px");
         foodThumb.attr("height", "250px");
-
+        // appening title, thumb and type to page
         $("#mainContent").append(foodTitle);
         $("#mainContent").append(foodThumb);
         $("#mainContent").append(foodType);
-
+        // for loop cycling through 20 ingredients
         for (let index = 1; index <= 20; index++) {
-            // erika edited to get full igredient list on page, added p tags to get in a list
-
+            // to get full igredient list on page, added p tags to get in a list
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
-
         }
-
-
+        // putting instructions on page
         $("#mainContent3").append(instructions)
     })
 };
 
-//create a function the connects the searchBar input to the food function when foodBtn is clicked
-//create a function the connects the searchBar input to the food function when foodBtnR is clicked
+// function for random drinks that aren't ingredient driven
 function randomDrink() {
-
+    //creates a request for information from the drinkdb endpoint 
     $.ajax({
 
         method: "GET",
         url: "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-
+        // runs information through a function
     }).then(function (response) {
         console.log(response);
+        // variables equal to newly created tags
         var drinkThumb = $("<img>");
         var drinkTitle = $("<h3>");
         var drinkType = $("<h4>");
         var instructionsDrink = $("<p>");
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
+        // pulling to create text
         instructionsDrink.text("Instructions: " + response.drinks[0].strInstructions)
         drinkType.text("Drink type: " + response.drinks[0].strAlcoholic)
         drinkTitle.text("Beverage Name: " + response.drinks[0].strDrink);
+        // pulling to put thrum and size attr
         drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
         drinkThumb.attr("width", "250px");
         drinkThumb.attr("height", "250px");
+        // putting content on page
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
+        // for loop to run through ingredients
         for (let index = 1; index <= 20; index++) {
-            // erika edited to get full igredient list on page, added p tags to get in a list
+            // to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
                 return;
             }
+            // appening ingredients, measurements, and instructions to page
             $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
             $("#mainContent3").append(instructionsDrink);
         }
@@ -303,59 +301,40 @@ function randomDrink() {
 
 //creates a function that calls the API and returns an object to the console
 function food(foodInput) {
-
+    //creates a request for information from the mealdb endpoint 
     $.ajax({
 
         method: "GET",
         url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + foodInput
-
+        // runs information through a function
     }).then(function (response) {
-
         console.log(response);
-
+        // variables equal to newly created tags
         var foodThumb = $("<img>");
-
         var foodTitle = $("<h3>");
-
         var foodType = $("<h4>");
-
         var instructions = $("<p>");
-
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
-
+        // pulling to create text
         instructions.text(response.meals[0].strInstructions)
-
         foodType.text("Cuisine type: " + response.meals[0].strArea)
-
         foodTitle.text(response.meals[0].strMeal);
-
+        // pulling to put thrum and size attr
         foodThumb.attr("src", response.meals[0].strMealThumb);
         foodThumb.attr("width", "250px");
         foodThumb.attr("height", "250px");
-
+        // putting content on page
         $("#mainContent").append(foodTitle);
-
         $("#mainContent").append(foodThumb);
-
         $("#mainContent").append(foodType);
-
-
-        // $("#mainContent5").append(ytVideo);
-
+        // for loop to run through ingredients
         for (let index = 1; index <= 20; index++) {
-
-
             // to get full igredient list on page, added p tags to get in a list
             if (response.meals[0]["strMeasure" + index] === null || response.meals[0]["strIngredient" + index] === null) {
                 return;
             }
-
+            // appening ingredients, measurements, and instructions to page
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
-
         }
-
-
         $("#mainContent3").append(instructions)
 
     })
@@ -364,41 +343,40 @@ function food(foodInput) {
 
 //creates a function that calls the API and returns an object to the console
 function drinks(drinkInput) {
-
+    //creates a request for information from the drinkdb endpoint 
     $.ajax({
         method: "GET",
         url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkInput
-
+        // runs information through a function
     }).then(function (response) {
         console.log(response);
+        // variables equal to newly created tags
         var drinkThumb = $("<img>");
         var drinkTitle = $("<h3>");
         var drinkType = $("<h4>");
         var instructionsDrink = $("<p>");
-
+        // pulling to create text
         instructionsDrink.text("Instructions: " + response.drinks[0].strInstructions);
         drinkType.text("Drink type: " + response.drinks[0].strAlcoholic);
         drinkTitle.text("Beverage Name: " + response.drinks[0].strDrink);
+        // pulling to put thrum and size attr
         drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
         drinkThumb.attr("width", "250px");
         drinkThumb.attr("height", "250px");
+        // putting content on page
         $("#mainContent").append(drinkTitle);
         $("#mainContent").append(drinkThumb);
         $("#mainContent").append(drinkType);
-
+        // for loop to run through ingredients
         for (let index = 1; index <= 20; index++) {
-            // erika edited to get full igredient list on page, added p tags to get in a list
+            // to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
                 return;
             }
-
+            // appening ingredients, measurements, and instructions to page
             $('#mainContent2').append('<li>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</li>');
             $("#mainContent3").append(instructionsDrink);
-
-
         }
-
-
     })
 };
 
