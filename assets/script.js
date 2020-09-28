@@ -1,18 +1,17 @@
-
-
+// calling init function so localstorage is loaded when page is loaded
 init()
+// getting the item foodstorage or an empty array
 var foodStorage = localStorage.getItem("foodStorage") || [];
-
+// getting the item storedDrink or an empty array
 var storedDrink = JSON.parse(localStorage.getItem("storedDrink")) || [];
-
+// storearray = to empty array
 var storeArray = [];
-//logs the input from searchBar element when the foodBtn is clicked
 
+//logs the input from searchBar element when the foodBtn is clicked
 $("#foodBtn").on("click", function (e) {
     e.preventDefault();
 
     // make main box go blank with each click
-
     $("#mainContent").html("")
     $("#mainContent2").html("")
     $("#mainContent3").html("")
@@ -20,9 +19,9 @@ $("#foodBtn").on("click", function (e) {
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val().trim();
-
-
+    // food function being called to return a value for foodinput
     food(foodInput);
+    // store function being called to return a value for foodinput
     store(foodInput);
 
 });
@@ -31,27 +30,26 @@ $("#foodBtn").on("click", function (e) {
 $("#drinkBtn").on("click", function (e) {
     e.preventDefault();
 
+    // make main box go blank with each click
     $("#mainContent").html("");
     $("#mainContent2").html("");
     $("#mainContent3").html("");
     $("#mainContent4").html("");
 
-
     //sets a variable that is equal to the value input into the searchBar
     var drinkInput = $("#searchBar").val().trim();
-
-    //calls the randomFood function
-    
+    //calls the drink function to return a value for drinkinput
     drinks(drinkInput);
+    //calls the stored function to return a value for drinkinput
     stored(drinkInput);
 
 });
-
 
 //logs a random recipe to the console when the pickBtn is picked 
 $("#foodBtnR").on("click", function (e) {
     e.preventDefault();
 
+    // make main box go blank with each click
     $("#mainContent").empty("")
     $("#mainContent2").empty("")
     $("#mainContent3").empty("")
@@ -60,9 +58,9 @@ $("#foodBtnR").on("click", function (e) {
 
     //sets a variable that is equal to the value input into the searchBar
     var foodInput = $("#searchBar").val();
-
-    //calls the randomFood function
+    //calls the randomFood function to return a value
     randomFood();
+    // calls te random store function to return a value for foodinput
     store(foodInput);
 
 })
@@ -71,6 +69,7 @@ $("#foodBtnR").on("click", function (e) {
 $("#drinkBtnR").on("click", function (e) {
     e.preventDefault();
 
+    // make main box go blank with each click
     $("#mainContent").empty("");
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
@@ -81,8 +80,9 @@ $("#drinkBtnR").on("click", function (e) {
     //sets a variable that is equal to the value input into the searchBar
     var drinkInput = $("#searchBar").val();
 
-    //calls the randomFood function
+    //calls the randomdrink function to return a value
     randomDrink();
+    // calls the random stored fucntion to ruturn a value
     stored(drinkInput);
 
 });
@@ -91,6 +91,7 @@ $("#drinkBtnR").on("click", function (e) {
 $(document).on("click", ".recentSearch", function (e) {
     e.preventDefault();
 
+    // make main box go blank with each click
     $("#mainContent").empty("");
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
@@ -100,19 +101,18 @@ $(document).on("click", ".recentSearch", function (e) {
     //sets a variable that is equal to the value of the button's text
     recentsAppended = $(this).text();
 
-    //calls gettRecFood function
+    //calls gettRecFood function to return a value 
     getRecFood(recentsAppended);
-
+    // getting yes in the console
     console.log("yes");
 
 });
 
-
-
-//when the recentButton is clicked, so something
+//when the recentButton is clicked, do something
 $(document).on("click", ".recentSearchDrink", function (e) {
     e.preventDefault();
 
+    // make main box go blank with each click
     $("#mainContent").empty("");
     $("#mainContent2").empty("");
     $("#mainContent3").empty("");
@@ -124,7 +124,7 @@ $(document).on("click", ".recentSearchDrink", function (e) {
 
     //calls gettRecFood function
     getRecDrink(recentsAppended);
-
+    // getting yes in console
     console.log("yes");
 
 });
@@ -132,10 +132,8 @@ $(document).on("click", ".recentSearchDrink", function (e) {
 //creates a function that calls the API and returns an object to the console
 function getRecFood() {
 
-
     //log recentsAppended to the console
     console.log("hello");
-
 
     //creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
     $.ajax({
@@ -145,58 +143,43 @@ function getRecFood() {
 
         //then creates a function 
     }).then(function (response) {
-
-
+        // foodthumb = to newly created image tag
         var foodThumb = $("<img>");
-
+        // foodtitle = to newly created h3 tag
         var foodTitle = $("<h3>");
-
+        // foodtype = to newly created h4 tag
         var foodType = $("<h4>");
-
+        // instructions = to newly created p tag
         var instructions = $("<p>");
-
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
-
+        // putting instructions, area, meal into text on the page
         instructions.text(response.meals[0].strInstructions)
-
         foodType.text("Cuisine type: " + response.meals[0].strArea)
-
         foodTitle.text(response.meals[0].strMeal);
-
+        // putting foodthumb into a photo on the page along with width and height of the img
         foodThumb.attr("src", response.meals[0].strMealThumb);
         foodThumb.attr("width", "250px");
         foodThumb.attr("height", "250px");
-
+        // putting everything onto the maincontent area
         $("#mainContent").append(foodTitle);
-
         $("#mainContent").append(foodThumb);
-
         $("#mainContent").append(foodType);
-
-
-
+        // for loop to go through the 20 ingredients
         for (let index = 1; index <= 20; index++) {
             console.log(response.meals[0]["strIngredient" + index]);
-            // erika edited to get full igredient list on page, added p tags to get in a list
-
+            // to get full igredient list on page, added p tags to get in a list
             $('#mainContent2').append('<p>' + response.meals[0]["strMeasure" + index] + " " + response.meals[0]["strIngredient" + index] + '</p>');
-
         }
-
+        // putting instructions on the page in maincontent
         $("#mainContent4").append(instructions)
 
     })
 };
 
-
 //creates a function that calls the API and returns an object to the console
 function getRecDrink() {
 
-
     //log recentsAppended to the console
     console.log("hello");
-
 
     //creates a request for information from the mealdb endpoint and attaches the information stored in the recentsAppended variable
     $.ajax({
@@ -204,56 +187,39 @@ function getRecDrink() {
         method: "GET",
         url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + recentsAppended
 
-        //then creates a function 
+        //then runs information through a function
     }).then(function (response) {
-
-
+        // variables set equal to newly created tags of different types
         var drinkThumb = $("<img>");
-
         var drinkTitle = $("<h3>");
-
         var drinkType = $("<h4>");
-
         var instructionsDrink = $("<p>");
-
-        // var ytVideo = $(<iframe width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>)
-        // ytVideo.attr("src", response.meals[0].strYoutube)
-
+        // instructions, alcoholic, drink being pulled and put into text
         instructionsDrink.text(response.drinks[0].strInstructions)
-
         drinkType.text(response.drinks[0].strAlcoholic)
-
         drinkTitle.text(response.drinks[0].strDrink);
-
+        // thumb being put into an src and give a height and width
         drinkThumb.attr("src", response.drinks[0].strDrinkThumb);
         drinkThumb.attr("width", "250px");
         drinkThumb.attr("height", "250px");
-
+        // appending information to the maincontent
         $("#mainContent").append(drinkTitle);
-
         $("#mainContent").append(drinkThumb);
-
         $("#mainContent").append(drinkType);
-
-
-
+        // for loop cycling through ingrdients
         for (let index = 1; index <= 20; index++) {
             console.log(response.drinks[0]["strIngredient" + index]);
-            // erika edited to get full igredient list on page, added p tags to get in a list
-
+            // to get full igredient list on page, added p tags to get in a list
             if (response.drinks[0]["strMeasure" + index] === null || response.drinks[0]["strIngredient" + index] === null) {
                 return;
             }
-
+            // putting instructions, ingredients, and measurements on the maincontent
             $('#mainContent2').append('<p>' + response.drinks[0]["strMeasure" + index] + " " + response.drinks[0]["strIngredient" + index] + '</p>');
             $("#mainContent4").append(instructionsDrink)
         }
 
     })
 };
-
-
-
 
 //create a function the connects the searchBar input to the food function when foodBtnR is clicked
 function randomFood() {
